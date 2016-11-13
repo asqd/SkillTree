@@ -1,0 +1,27 @@
+%h1 Listing assignment_specialty_disciplines
+
+%table
+  %thead
+    %tr
+      %th Specialty
+      %th Discipline
+      %th Term
+      %th Report
+      %th
+      %th
+      %th
+
+  %tbody
+    - @assignment_specialty_disciplines.each do |assignment_specialty_discipline|
+      %tr
+        %td= assignment_specialty_discipline.specialty
+        %td= assignment_specialty_discipline.discipline
+        %td= assignment_specialty_discipline.term
+        %td= assignment_specialty_discipline.report
+        %td= link_to 'Show', assignment_specialty_discipline
+        %td= link_to 'Edit', edit_assignment_specialty_discipline_path(assignment_specialty_discipline)
+        %td= link_to 'Destroy', assignment_specialty_discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Assignment specialty discipline', new_assignment_specialty_discipline_path

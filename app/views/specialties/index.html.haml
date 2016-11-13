@@ -1,0 +1,27 @@
+%h1 Listing specialties
+
+%table
+  %thead
+    %tr
+      %th Spec
+      %th Name
+      %th Type
+      %th Mode
+      %th
+      %th
+      %th
+
+  %tbody
+    - @specialties.each do |specialty|
+      %tr
+        %td= specialty.spec_id
+        %td= specialty.name
+        %td= specialty.type
+        %td= specialty.mode
+        %td= link_to 'Show', specialty
+        %td= link_to 'Edit', edit_specialty_path(specialty)
+        %td= link_to 'Destroy', specialty, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Specialty', new_specialty_path

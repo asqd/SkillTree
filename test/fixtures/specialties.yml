@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spec_id: 1
+  name: MyString
+  type: 1
+  mode: 1
+
+two:
+  spec_id: 1
+  name: MyString
+  type: 1
+  mode: 1

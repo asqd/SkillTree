@@ -1,0 +1,1 @@
+json.array! @link_specialty_disciplines, partial: 'link_specialty_disciplines/link_specialty_discipline', as: :link_specialty_discipline

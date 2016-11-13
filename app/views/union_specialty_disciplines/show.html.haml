@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Specialty:
+  = @union_specialty_discipline.specialty
+%p
+  %b Discipline:
+  = @union_specialty_discipline.discipline
+%p
+  %b Term:
+  = @union_specialty_discipline.term
+%p
+  %b Report:
+  = @union_specialty_discipline.report
+
+= link_to 'Edit', edit_union_specialty_discipline_path(@union_specialty_discipline)
+\|
+= link_to 'Back', union_specialty_disciplines_path

@@ -1,0 +1,22 @@
+= form_for @link_specialty_discipline do |f|
+  - if @link_specialty_discipline.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@link_specialty_discipline.errors.count, "error")} prohibited this link_specialty_discipline from being saved:"
+      %ul
+        - @link_specialty_discipline.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :specialty
+    = f.text_field :specialty
+  .field
+    = f.label :discipline
+    = f.text_field :discipline
+  .field
+    = f.label :term
+    = f.number_field :term
+  .field
+    = f.label :report
+    = f.number_field :report
+  .actions
+    = f.submit 'Save'

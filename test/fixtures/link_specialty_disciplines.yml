@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  specialty: one
+  discipline: one
+  term: 1
+  report: 1
+
+two:
+  specialty: two
+  discipline: two
+  term: 1
+  report: 1
