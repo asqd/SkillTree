@@ -3,8 +3,8 @@
 %table
   %thead
     %tr
-      %th Name
-      %th Module
+      %th Dis name
+      %th Dis module
       %th
       %th
       %th
@@ -12,8 +12,8 @@
   %tbody
     - @disciplines.each do |discipline|
       %tr
-        %td= discipline.name
-        %td= discipline.module
+        %td= discipline.dis_name
+        %td= discipline.dis_module
         %td= link_to 'Show', discipline
         %td= link_to 'Edit', edit_discipline_path(discipline)
         %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }

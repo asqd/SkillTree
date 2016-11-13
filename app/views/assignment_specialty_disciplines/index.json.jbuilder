@@ -1,1 +1,0 @@
-json.array! @assignment_specialty_disciplines, partial: 'assignment_specialty_disciplines/assignment_specialty_discipline', as: :assignment_specialty_discipline

@@ -2,12 +2,12 @@
 
 one:
   spec_id: 1
-  name: MyString
-  type: 1
-  mode: 1
+  spec_name: MyString
+  spec_type: 1
+  spec_mode: 1
 
 two:
   spec_id: 1
-  name: MyString
-  type: 1
-  mode: 1
+  spec_name: MyString
+  spec_type: 1
+  spec_mode: 1

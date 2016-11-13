@@ -8,10 +8,10 @@
 
   .field
     = f.label :specialty
-    = f.text_field :specialty
+    = f.select(:specialty_id, specialty_options(f.object.specialty_id))
   .field
     = f.label :discipline
-    = f.text_field :discipline
+    = f.select(:discipline_id, discipline_options(f.object.discipline_id))
   .field
     = f.label :term
     = f.number_field :term

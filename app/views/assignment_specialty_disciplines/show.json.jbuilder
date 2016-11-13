@@ -1,1 +1,0 @@
-json.partial! "assignment_specialty_disciplines/assignment_specialty_discipline", assignment_specialty_discipline: @assignment_specialty_discipline

@@ -10,32 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113131037) do
+ActiveRecord::Schema.define(version: 20161113140855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assignment_specialty_disciplines", force: :cascade do |t|
-    t.integer  "specialty_id"
-    t.integer  "discipline_id"
-    t.integer  "term"
-    t.integer  "report"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["discipline_id"], name: "index_assignment_specialty_disciplines_on_discipline_id", using: :btree
-    t.index ["specialty_id"], name: "index_assignment_specialty_disciplines_on_specialty_id", using: :btree
-  end
-
   create_table "disciplines", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "module"
+    t.string   "dis_name"
+    t.integer  "dis_module"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "disciplines_specialties", id: false, force: :cascade do |t|
-    t.integer "discipline_id", null: false
-    t.integer "specialty_id",  null: false
   end
 
   create_table "link_specialty_disciplines", force: :cascade do |t|
@@ -51,15 +35,13 @@ ActiveRecord::Schema.define(version: 20161113131037) do
 
   create_table "specialties", force: :cascade do |t|
     t.integer  "spec_id"
-    t.string   "name"
-    t.integer  "type"
-    t.integer  "mode"
+    t.string   "spec_name"
+    t.integer  "spec_type"
+    t.integer  "spec_mode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "assignment_specialty_disciplines", "disciplines"
-  add_foreign_key "assignment_specialty_disciplines", "specialties"
   add_foreign_key "link_specialty_disciplines", "disciplines"
   add_foreign_key "link_specialty_disciplines", "specialties"
 end

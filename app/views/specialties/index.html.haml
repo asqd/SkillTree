@@ -4,9 +4,9 @@
   %thead
     %tr
       %th Spec
-      %th Name
-      %th Type
-      %th Mode
+      %th Spec name
+      %th Spec type
+      %th Spec mode
       %th
       %th
       %th
@@ -15,9 +15,9 @@
     - @specialties.each do |specialty|
       %tr
         %td= specialty.spec_id
-        %td= specialty.name
-        %td= specialty.type
-        %td= specialty.mode
+        %td= specialty.spec_name
+        %td= specialty.spec_type
+        %td= specialty.spec_mode
         %td= link_to 'Show', specialty
         %td= link_to 'Edit', edit_specialty_path(specialty)
         %td= link_to 'Destroy', specialty, :method => :delete, :data => { :confirm => 'Are you sure?' }
