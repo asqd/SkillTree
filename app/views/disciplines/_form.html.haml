@@ -1,0 +1,16 @@
+= form_for @discipline do |f|
+  - if @discipline.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@discipline.errors.count, "error")} prohibited this discipline from being saved:"
+      %ul
+        - @discipline.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :module
+    = f.number_field :module
+  .actions
+    = f.submit 'Save'

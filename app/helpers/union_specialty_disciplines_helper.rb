@@ -1,0 +1,2 @@
+module UnionSpecialtyDisciplinesHelper
+end

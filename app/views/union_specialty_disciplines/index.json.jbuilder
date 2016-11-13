@@ -1,0 +1,1 @@
+json.array! @union_specialty_disciplines, partial: 'union_specialty_disciplines/union_specialty_discipline', as: :union_specialty_discipline

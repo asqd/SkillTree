@@ -1,0 +1,27 @@
+%h1 Listing union_specialty_disciplines
+
+%table
+  %thead
+    %tr
+      %th Specialty
+      %th Discipline
+      %th Term
+      %th Report
+      %th
+      %th
+      %th
+
+  %tbody
+    - @union_specialty_disciplines.each do |union_specialty_discipline|
+      %tr
+        %td= union_specialty_discipline.specialty
+        %td= union_specialty_discipline.discipline
+        %td= union_specialty_discipline.term
+        %td= union_specialty_discipline.report
+        %td= link_to 'Show', union_specialty_discipline
+        %td= link_to 'Edit', edit_union_specialty_discipline_path(union_specialty_discipline)
+        %td= link_to 'Destroy', union_specialty_discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Union specialty discipline', new_union_specialty_discipline_path

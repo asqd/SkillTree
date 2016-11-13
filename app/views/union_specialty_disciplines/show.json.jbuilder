@@ -1,0 +1,1 @@
+json.partial! "union_specialty_disciplines/union_specialty_discipline", union_specialty_discipline: @union_specialty_discipline
