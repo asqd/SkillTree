@@ -3,10 +3,11 @@
 %table
   %thead
     %tr
+      %th Term
+      %th Htype
+      %th Human htype
       %th Specialty
       %th Discipline
-      %th Term
-      %th Report
       %th
       %th
       %th
@@ -14,10 +15,11 @@
   %tbody
     - @link_specialty_disciplines.each do |link_specialty_discipline|
       %tr
+        %td= link_specialty_discipline.term
+        %td= link_specialty_discipline.htype
+        %td= link_specialty_discipline.human_htype
         %td= link_specialty_discipline.specialty
         %td= link_specialty_discipline.discipline
-        %td= link_specialty_discipline.term
-        %td= link_specialty_discipline.report
         %td= link_to 'Show', link_specialty_discipline
         %td= link_to 'Edit', edit_link_specialty_discipline_path(link_specialty_discipline)
         %td= link_to 'Destroy', link_specialty_discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }

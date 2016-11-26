@@ -7,16 +7,19 @@
           %li= msg
 
   .field
+    = f.label :term
+    = f.number_field :term
+  .field
+    = f.label :htype
+    = f.number_field :htype
+  .field
+    = f.label :human_htype
+    = f.text_field :human_htype
+  .field
     = f.label :specialty
     = f.select(:specialty_id, specialty_options(f.object.specialty_id))
   .field
     = f.label :discipline
     = f.select(:discipline_id, discipline_options(f.object.discipline_id))
-  .field
-    = f.label :term
-    = f.number_field :term
-  .field
-    = f.label :report
-    = f.number_field :report
   .actions
     = f.submit 'Save'

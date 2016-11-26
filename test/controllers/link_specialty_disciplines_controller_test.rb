@@ -17,7 +17,7 @@ class LinkSpecialtyDisciplinesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create link_specialty_discipline" do
     assert_difference('LinkSpecialtyDiscipline.count') do
-      post link_specialty_disciplines_url, params: { link_specialty_discipline: { discipline_id: @link_specialty_discipline.discipline_id, report: @link_specialty_discipline.report, specialty_id: @link_specialty_discipline.specialty_id, term: @link_specialty_discipline.term } }
+      post link_specialty_disciplines_url, params: { link_specialty_discipline: { discipline_id: @link_specialty_discipline.discipline_id, htype: @link_specialty_discipline.htype, human_htype: @link_specialty_discipline.human_htype, specialty_id: @link_specialty_discipline.specialty_id, term: @link_specialty_discipline.term } }
     end
 
     assert_redirected_to link_specialty_discipline_url(LinkSpecialtyDiscipline.last)
@@ -34,7 +34,7 @@ class LinkSpecialtyDisciplinesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update link_specialty_discipline" do
-    patch link_specialty_discipline_url(@link_specialty_discipline), params: { link_specialty_discipline: { discipline_id: @link_specialty_discipline.discipline_id, report: @link_specialty_discipline.report, specialty_id: @link_specialty_discipline.specialty_id, term: @link_specialty_discipline.term } }
+    patch link_specialty_discipline_url(@link_specialty_discipline), params: { link_specialty_discipline: { discipline_id: @link_specialty_discipline.discipline_id, htype: @link_specialty_discipline.htype, human_htype: @link_specialty_discipline.human_htype, specialty_id: @link_specialty_discipline.specialty_id, term: @link_specialty_discipline.term } }
     assert_redirected_to link_specialty_discipline_url(@link_specialty_discipline)
   end
 

@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  spec_id: 1
-  spec_name: MyString
-  spec_type: 1
-  spec_mode: 1
+  dtype: 1
+  human_dtype: MyString
+  direction: MyString
+  level: 1
+  human_level: MyString
+  study_form: 1
+  human_study_form: MyString
 
 two:
-  spec_id: 1
-  spec_name: MyString
-  spec_type: 1
-  spec_mode: 1
+  dtype: 1
+  human_dtype: MyString
+  direction: MyString
+  level: 1
+  human_level: MyString
+  study_form: 1
+  human_study_form: MyString

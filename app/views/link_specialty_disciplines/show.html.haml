@@ -1,17 +1,20 @@
 %p#notice= notice
 
 %p
+  %b Term:
+  = @link_specialty_discipline.term
+%p
+  %b Htype:
+  = @link_specialty_discipline.htype
+%p
+  %b Human htype:
+  = @link_specialty_discipline.human_htype
+%p
   %b Specialty:
   = @link_specialty_discipline.specialty
 %p
   %b Discipline:
   = @link_specialty_discipline.discipline
-%p
-  %b Term:
-  = @link_specialty_discipline.term
-%p
-  %b Report:
-  = @link_specialty_discipline.report
 
 = link_to 'Edit', edit_link_specialty_discipline_path(@link_specialty_discipline)
 \|

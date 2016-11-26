@@ -17,7 +17,7 @@ class SpecialtiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create specialty" do
     assert_difference('Specialty.count') do
-      post specialties_url, params: { specialty: { spec_id: @specialty.spec_id, spec_mode: @specialty.spec_mode, spec_name: @specialty.spec_name, spec_type: @specialty.spec_type } }
+      post specialties_url, params: { specialty: { direction: @specialty.direction, dtype: @specialty.dtype, human_dtype: @specialty.human_dtype, human_level: @specialty.human_level, human_study_form: @specialty.human_study_form, level: @specialty.level, study_form: @specialty.study_form } }
     end
 
     assert_redirected_to specialty_url(Specialty.last)
@@ -34,7 +34,7 @@ class SpecialtiesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update specialty" do
-    patch specialty_url(@specialty), params: { specialty: { spec_id: @specialty.spec_id, spec_mode: @specialty.spec_mode, spec_name: @specialty.spec_name, spec_type: @specialty.spec_type } }
+    patch specialty_url(@specialty), params: { specialty: { direction: @specialty.direction, dtype: @specialty.dtype, human_dtype: @specialty.human_dtype, human_level: @specialty.human_level, human_study_form: @specialty.human_study_form, level: @specialty.level, study_form: @specialty.study_form } }
     assert_redirected_to specialty_url(@specialty)
   end
 
