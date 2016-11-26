@@ -4,7 +4,7 @@ module LinkSpecialtyDisciplinesHelper
 	end
 
 	def discipline_options(selected)
-		options_for_select(Discipline.all.map{ |ds| ["#{ds.name} #{ds.label} #", ds.id] }, selected)
+		options_for_select(Discipline.all.map{ |ds| ["#{ds.name} #{ds.label}", ds.id] }, selected)
 	end
 
 end
