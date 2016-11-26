@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  term: 1
+  htype: 1
+  human_htype: MyString
   specialty: one
   discipline: one
-  term: 1
-  report: 1
 
 two:
+  term: 1
+  htype: 1
+  human_htype: MyString
   specialty: two
   discipline: two
-  term: 1
-  report: 1

@@ -69,6 +69,6 @@ class LinkSpecialtyDisciplinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_specialty_discipline_params
-      params.require(:link_specialty_discipline).permit(:specialty_id, :discipline_id, :term, :report)
+      params.require(:link_specialty_discipline).permit(:term, :htype, :human_htype, :specialty_id, :discipline_id)
     end
 end

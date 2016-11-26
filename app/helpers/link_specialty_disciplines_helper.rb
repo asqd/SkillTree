@@ -1,10 +1,10 @@
 module LinkSpecialtyDisciplinesHelper
 	def specialty_options(selected)
-		options_for_select(Specialty.all.map{ |sp| ["#{sp.spec_id} #{sp.spec_name} #{sp.spec_type} #{sp.spec_mode} ", sp.id] }, selected)
+		options_for_select(Specialty.all.map{ |sp| ["#{sp.human_dtype} #{sp.direction} #{sp.human_level} #{sp.human_study_form} ", sp.id] }, selected)
 	end
 
 	def discipline_options(selected)
-		options_for_select(Discipline.all.map{ |ds| ["#{ds.dis_name} #{ds.dis_module} #", ds.id] }, selected)
+		options_for_select(Discipline.all.map{ |ds| ["#{ds.name} #{ds.label} #", ds.id] }, selected)
 	end
 
 end

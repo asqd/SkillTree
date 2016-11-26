@@ -7,16 +7,25 @@
           %li= msg
 
   .field
-    = f.label :spec_id
-    = f.number_field :spec_id
+    = f.label :dtype
+    = f.number_field :dtype
   .field
-    = f.label :spec_name
-    = f.text_field :spec_name
+    = f.label :human_dtype
+    = f.text_field :human_dtype
   .field
-    = f.label :spec_type
-    = f.number_field :spec_type
+    = f.label :direction
+    = f.text_field :direction
   .field
-    = f.label :spec_mode
-    = f.number_field :spec_mode
+    = f.label :level
+    = f.number_field :level
+  .field
+    = f.label :human_level
+    = f.text_field :human_level
+  .field
+    = f.label :study_form
+    = f.number_field :study_form
+  .field
+    = f.label :human_study_form
+    = f.text_field :human_study_form
   .actions
     = f.submit 'Save'

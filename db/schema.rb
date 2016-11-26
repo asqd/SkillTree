@@ -10,23 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113140855) do
+ActiveRecord::Schema.define(version: 20161126164255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "disciplines", force: :cascade do |t|
-    t.string   "dis_name"
-    t.integer  "dis_module"
+    t.string   "name"
+    t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "link_specialty_disciplines", force: :cascade do |t|
+    t.integer  "term"
+    t.integer  "htype"
+    t.string   "human_htype"
     t.integer  "specialty_id"
     t.integer  "discipline_id"
-    t.integer  "term"
-    t.integer  "report"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["discipline_id"], name: "index_link_specialty_disciplines_on_discipline_id", using: :btree
@@ -34,12 +35,15 @@ ActiveRecord::Schema.define(version: 20161113140855) do
   end
 
   create_table "specialties", force: :cascade do |t|
-    t.integer  "spec_id"
-    t.string   "spec_name"
-    t.integer  "spec_type"
-    t.integer  "spec_mode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "dtype"
+    t.string   "human_dtype"
+    t.string   "direction"
+    t.integer  "level"
+    t.string   "human_level"
+    t.integer  "study_form"
+    t.string   "human_study_form"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   add_foreign_key "link_specialty_disciplines", "disciplines"

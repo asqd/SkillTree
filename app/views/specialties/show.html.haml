@@ -1,17 +1,26 @@
 %p#notice= notice
 
 %p
-  %b Spec:
-  = @specialty.spec_id
+  %b Dtype:
+  = @specialty.dtype
 %p
-  %b Spec name:
-  = @specialty.spec_name
+  %b Human dtype:
+  = @specialty.human_dtype
 %p
-  %b Spec type:
-  = @specialty.spec_type
+  %b Direction:
+  = @specialty.direction
 %p
-  %b Spec mode:
-  = @specialty.spec_mode
+  %b Level:
+  = @specialty.level
+%p
+  %b Human level:
+  = @specialty.human_level
+%p
+  %b Study form:
+  = @specialty.study_form
+%p
+  %b Human study form:
+  = @specialty.human_study_form
 
 = link_to 'Edit', edit_specialty_path(@specialty)
 \|
