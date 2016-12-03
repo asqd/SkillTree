@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126164255) do
+ActiveRecord::Schema.define(version: 20161203100821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20161126164255) do
     t.string   "human_study_form"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "full_direction"
   end
 
   add_foreign_key "link_specialty_disciplines", "disciplines"

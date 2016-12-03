@@ -8,13 +8,13 @@
 
 # Специальности
 
-sp1 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Информатика и вычислительная техника', level: '0', human_level: 'Бакалавриат', study_form: '0', human_study_form: 'очная')
-sp2 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Информатика и вычислительная техника', level: '1', human_level: 'Магистратура', study_form: '0', human_study_form: 'очная')
-sp3 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Информационные системы и технологии', level: '0', human_level: 'Бакалавриат', study_form: '0', human_study_form: 'очная')
-sp4 = Specialty.create(dtype: '1', human_dtype: 'Специальность', direction: 'Ядерные реакторы и материалы', level: '2', human_level: 'Специалитет', study_form: '0', human_study_form: 'очная')
-sp5 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Теплофизика ядерных энергетических установок', level: '1', human_level: 'Магистратура', study_form: '0', human_study_form: 'очная')
-sp6 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Высокопроизводительные компьютерные системы и технологии', level: '0', human_level: 'Бакалавриат', study_form: '1', human_study_form: 'очно-заочная')
-sp6 = Specialty.create(dtype: '1', human_dtype: 'Специальность', direction: 'Электроника физических установок', level: '2', human_level: 'Специалитет', study_form: '1', human_study_form: 'очно-заочная')
+sp1 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Информатика и вычислительная техника', full_direction: 'Направление 09.03.01 "Информатика и вычислительная техника"', level: '0', human_level: 'Бакалавриат', study_form: '0', human_study_form: 'очная')
+sp2 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Информатика и вычислительная техника', full_direction: 'Направление 09.04.01 "Информатика и вычислительная техника"', level: '1', human_level: 'Магистратура', study_form: '0', human_study_form: 'очная')
+sp3 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Информационные системы и технологии', full_direction: 'Направление 09.03.02 "Информационные системы и технологии"', level: '0', human_level: 'Бакалавриат', study_form: '0', human_study_form: 'очная')
+sp4 = Specialty.create(dtype: '1', human_dtype: 'Специальность', direction: 'Ядерные реакторы и материалы', full_direction: 'Специальность 14.05.01 "Ядерные реакторы и материалы"', level: '2', human_level: 'Специалитет', study_form: '0', human_study_form: 'очная')
+sp5 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Ядерные физика и технологии', full_direction: 'Направление 14.04.02 "Ядерные физика и технологии"', level: '1', human_level: 'Магистратура', study_form: '0', human_study_form: 'очная')
+sp6 = Specialty.create(dtype: '0', human_dtype: 'Направление', direction: 'Прикладная информатика', full_direction: 'Направление 09.03.03 "Прикладная информатика"', level: '0', human_level: 'Бакалавриат', study_form: '1', human_study_form: 'очно-заочная')
+sp7 = Specialty.create(dtype: '1', human_dtype: 'Специальность', direction: 'Электроника и автоматика физических установок', full_direction: 'Специальность 14.05.04 "Электроника и автоматика физических установок"', level: '2', human_level: 'Специалитет', study_form: '1', human_study_form: 'очно-заочная')
 
 #Дисциплины
 
@@ -101,5 +101,3 @@ link2_14 = LinkSpecialtyDiscipline.create(term: '2', htype: '3', human_htype: '�
 link2_14 = LinkSpecialtyDiscipline.create(term: '3', htype: '5', human_htype: 'Экзамен', specialty: sp3, discipline: ds14)
 
 link2_15 = LinkSpecialtyDiscipline.create(term: '5', htype: '3', human_htype: 'Зачет', specialty: sp3, discipline: ds15)
-
-

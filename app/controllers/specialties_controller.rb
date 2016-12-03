@@ -4,7 +4,10 @@ class SpecialtiesController < ApplicationController
   # GET /specialties
   # GET /specialties.json
   def index
-    @specialties = Specialty.all
+      @specialties = Specialty.all
+      @specialties = @specialties.where("full_direction ilike ?", '%' + params['full_direction'].to_s + '%') if params['full_direction'].present?
+      @specialties = @specialties.where("level = ?", params['level'].to_s) if params['level'].present?
+      @specialties = @specialties.where("study_form = ?", params['study_form'].to_s) if params['study_form'].present?
   end
 
   # GET /specialties/1
