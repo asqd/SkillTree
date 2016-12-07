@@ -1,0 +1,40 @@
+body {
+	font-family: "PT Sans", sans-serif;
+}
+
+
+.content {
+	background: #f7f7f7;
+	padding: 8px 8px 50px;
+}
+.section {
+	background: #fff;
+	max-width: 90%;
+	padding: 20px 0 0;
+	margin: auto;
+}
+.column {
+	display:inline-block;
+	width:20%;
+}
+
+.table-title {
+	font-weight: 600;
+}
+
+.hover-highlight {
+	padding-top: 11px;
+}
+.hover-highlight:hover {
+	background: #C6CACE;
+}
+
+
+.hidden-column {
+	display: none;
+
+}
+
+.show_disciplines {
+		display: block !important;
+	}
