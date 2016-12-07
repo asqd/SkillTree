@@ -14,3 +14,27 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+flag = true;
+function doSmth(event) {
+	if ($(event.target).parents(".row").find('.hidden-column').hasClass('show_disciplines') || 
+		$(event.target).find('.hidden-column').hasClass('show_disciplines')) 
+	{
+		$(event.target).parents(".row").find('.hidden-column').removeClass('show_disciplines');
+		$(event.target).find('.hidden-column').removeClass('show_disciplines');
+	}
+	else 
+	{
+		$(event.target).parents(".row").find('.hidden-column').addClass('show_disciplines');
+		$(event.target).find('.hidden-column').addClass('show_disciplines');
+	}
+	return false;
+}
+
+// function doSmth(event) {
+//     if ($(this).find('.hidden-column').hasClass('show_disciplines'))
+// 		$(this).find('.hidden-column').removeClass('show_disciplines')
+// 	else 
+// 		$(this).find('.hidden-column').addClass('show_disciplines');
+// 	return false;
+// };
