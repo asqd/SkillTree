@@ -18,7 +18,7 @@
 flag = true;
 function doSmth(event) {
 	if ($(event.target).parents(".row").find('.hidden-column').hasClass('show_disciplines') || 
-		$(event.target).parents(".row").find('.hidden-column').hasClass('show_disciplines')) 
+		$(event.target).find('.hidden-column').hasClass('show_disciplines')) 
 	{
 		$(event.target).parents(".row").find('.hidden-column').removeClass('show_disciplines');
 		$(event.target).find('.hidden-column').removeClass('show_disciplines');
