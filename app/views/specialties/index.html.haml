@@ -48,5 +48,6 @@
             = link_to 'Show', specialty
             = link_to 'Edit', edit_specialty_path(specialty)
             = link_to 'Destroy', specialty, :method => :delete, :data => { :confirm => 'Are you sure?' }
-          .hidden-column Куча инфы
+          .hidden-column 
+            = render 'disciplines/index'
   = link_to 'New Specialty', new_specialty_path
