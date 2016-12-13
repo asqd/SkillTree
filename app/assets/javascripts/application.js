@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .
 
-flag = true;
 function doSmth(event) {
 	if ($(event.target).parents(".row").find('.hidden-column').hasClass('show_disciplines') || 
 		$(event.target).find('.hidden-column').hasClass('show_disciplines')) 
@@ -31,6 +31,38 @@ function doSmth(event) {
 	return false;
 }
 
+$(window).load(function(){
+
+	$(window).bind('scroll', function(e) {
+		scrolled()
+	})
+
+	var flag = false;
+
+	function scrolled()
+	{
+
+		var $scrolled = $(window).scrollTop()
+		var $header = $('.header-top').height()
+
+		if($scrolled >= $header)
+		{
+			if(flag == false)
+			{
+				$('header').addClass('fixed')
+				flag = true
+			}
+		}
+		if($scrolled < $header) 
+		{
+			if(flag == true)
+			{
+				$('header').removeClass('fixed')
+				flag = false
+			}
+		}
+	}
+});
 // function doSmth(event) {
 //     if ($(this).find('.hidden-column').hasClass('show_disciplines'))
 // 		$(this).find('.hidden-column').removeClass('show_disciplines')
