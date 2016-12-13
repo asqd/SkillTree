@@ -17,7 +17,6 @@ header
 			// left: 0
 			// right: 0
 			z-index: 10
-			// +transform(translateY(100px))
 
 			.header-top
 				position: absolute
@@ -49,8 +48,6 @@ header
 				&:hover
 					background: transparent
 
-		//.heart-icon
-			//@extend .ico-heart-icon-blue
 
 .header-top
 	height: 32px
@@ -82,6 +79,7 @@ header
 .header-top-nav__item
 	float: left
 	position: relative
+	display: block
 
 	a
 		height: 16px
@@ -202,8 +200,7 @@ header
 
 .header-info
 	float: left
-	// width: 50%
-	width: 47%
+	width: 50%
 	text-align: center
 	padding-top: 5px
 
@@ -215,7 +212,7 @@ header
 		margin-top: 15px
 		box-shadow: inset 0 1px 2px rgba(121, 121, 121, 0.5)
 
-.header-phone
+.header-title
 	color: black
 	font-size: 21px
 	line-height: 27px
@@ -257,36 +254,6 @@ header
 		.button
 			font-size: 10px
 
-.mobile-nav
-	width: 280px
-	background: #606060
-	position: absolute
-	top: 0
-	bottom: 0
-	left: 0
-	z-index: 100
-	padding: 20px
-	overflow-x: auto
-	//+transform(translateX(-280px))
-
-	.header-search
-		width: 100%
-		margin: 0 0 10px
-		float: none
-
-	.header-top-nav
-		float: none
-
-	.header-top-nav__item
-		display: block
-		float: none
-
-		a
-			padding-left: 0
-
-		a:hover
-			background: transparent
-
 .header-middle-nav
 	margin: 0
 	padding: 10px 0
@@ -297,85 +264,3 @@ header
 	a
 		color: #65acff
 		border-bottom: 1px dashed #65acff
-
-.header-mob__manager
-	padding: 5px 5px 10px 70px
-	background-color: white
-	border-radius: 3px
-	box-shadow: 0 0 2px rgba(0, 0, 0, 0.25)
-	position: relative
-	margin: 0 -10px 15px
-
-.header-mob__manager-cover
-	width: 60px
-	height: 60px
-	background-size: cover
-	background-position: center center
-	background-repeat: no-repeat
-	position: absolute
-	left: 5px
-	top: 5px
-	border-radius: 50%
-	border: 1px solid #ddd
-
-.header-mob__manager-info
-
-	p
-		font-size: 14px
-		line-height: 16px
-		margin: 0 0 5px
-
-	a
-		display: block
-		color: #3d87de
-
-.header-mob__manager__title
-	font-weight: 700
-	font-size: 16px
-	margin: 0 0 10px
-
-.header-mob__manager__phone
-	font-weight: 700
-
-.header-mob__button
-	text-align: center
-
-	.button
-		padding-left: 20px
-		padding-right: 20px
-		display: inline-block
-
-.header-mob-main__nav
-	ul
-		padding: 0
-
-	li
-		margin: 0 -20px
-		padding: 0 10px
-		position: relative
-		overflow: hidden
-
-		&.active
-			background-color: rgba(72, 72, 72, 0.6)
-			box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.4)
-
-			a
-				border-bottom-color: transparent
-
-			&:before
-				content: ""
-				position: absolute
-				top: 0
-				bottom: 0
-				right: -10px
-				margin: auto
-				width: 20px
-				height: 20px
-				background: #fff
-				transform: rotate(45deg)
-	a
-		font-size: 16px
-		display: block
-		color: #fff
-		padding: 15px 10px
-		border-bottom: 1px solid rgba(216, 216, 216, 0.3)
