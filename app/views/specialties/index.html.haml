@@ -9,7 +9,7 @@
           %tr
             %th{colspan:2}
               Наименование или код направления подготовки:
-              =text_field_tag('full_direction', '')
+              =text_field_tag('full_direction', '',:placeholder => "Наименование или код направления подготовки")
           %tr
             %th
               Уровень подготовки:
@@ -34,16 +34,18 @@
               =submit_tag('Искать')
 
       .row.table-title 
-        .column Тип дисциплины
+        -#.column Тип дисциплины
         .column Наименование подготовки
         .column Уровень обучения
         .column Форма обучения
       - @specialties.each do |specialty|
         .row.hover-highlight{onclick: "doSmth(event)"}
-          .column= specialty.human_dtype
+          -#  .column= specialty.human_dtype
           .column= specialty.full_direction
           .column= specialty.human_level
           .column= specialty.human_study_form
+          .column
+            = link_to 'Показать дерево', specialty
           .column
             = link_to 'Show', specialty
             = link_to 'Edit', edit_specialty_path(specialty)
