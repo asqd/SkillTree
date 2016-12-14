@@ -1,0 +1,34 @@
+.content
+  .section
+    %h1
+      Поиск специальностей
+
+    = form_tag(specialties_path, method: :get) do
+      %table
+        %thead
+          %tr
+            %th{colspan:2}
+              =text_field_tag('full_direction', '',:placeholder => "Наименование или код направления подготовки")
+          %tr
+            %th
+              Уровень подготовки:
+              бакалавриат
+              =check_box_tag('level', '0')
+            %th
+              специалитет
+              =check_box_tag('level', '2')
+            %th
+              магистратура
+              =check_box_tag('level', '1')
+          %tr
+            %th
+              Форма обучения:
+              очная
+              =radio_button_tag('study_form', '0')
+            %th
+              очно-заочная
+              =radio_button_tag('study_form', '1')
+          %tr
+            %th{colspan:5}
+              =submit_tag('Искать')
+
