@@ -7,7 +7,7 @@
       %table
         %thead
           %tr
-            %th{colspan:2}
+            %th{colspan:1}
               =text_field_tag('full_direction', '',:placeholder => "Наименование или код направления подготовки")
           %tr
             %th
@@ -29,6 +29,6 @@
               очно-заочная
               =radio_button_tag('study_form', '1')
           %tr
-            %th{colspan:5}
+            %th
               =submit_tag('Искать')
 

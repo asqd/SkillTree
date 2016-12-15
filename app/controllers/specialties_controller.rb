@@ -5,10 +5,12 @@ class SpecialtiesController < ApplicationController
   # GET /specialties.json
   def index
       @specialties = Specialty.all
-      @specialties = @specialties.where("full_direction ilike ?", '%' + params['full_direction'].to_s + '%') if params['full_direction'].present?
-      @specialties = @specialties.where("level = ?", params['level'].to_s) if params['level'].present?
-      @specialties = @specialties.where("study_form = ?", params['study_form'].to_s) if params['study_form'].present?
-      @disciplines = @specialties.first.link_specialty_disciplines
+      @specialties = @specialties.name_search(params['full_direction']) if params['full_direction'].present?
+      @specialties = @specialties.level_search(params['level']) if params['level'].present?
+      @specialties = @specialties.form_search(params['study_form']) if params['study_form'].present?
+      unless @specialties.present?
+        # !!!!!!!! тут надо выводить какое-нибудь сообщение, что ничего найдено
+      end
   end
 
   # GET /specialties/1

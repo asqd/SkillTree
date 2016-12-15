@@ -1,23 +1,25 @@
-%h1 Дисциплины 
+%h3 Дисциплины 
 
 %table
   %thead
     %tr
       %th Name
       %th Label
-      %th
+      %th 
       %th
       %th
 
   %tbody
-    - @disciplines.each do |discipline|
+    - special.link_specialty_disciplines.each do |links|
+      / - links.each do |one_discipline|
       %tr
-        %td= discipline.discipline.name
-        %td= discipline.discipline.label
-        %td= link_to 'Show', discipline
-        %td= link_to 'Edit', edit_discipline_path(discipline)
-        %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= links.discipline.name 
+        %td= links.discipline.label 
+
+        / %td= link_to 'Show', links
+        / %td= link_to 'Edit', edit_discipline_path(links)
+        / %td= link_to 'Destroy', links, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Discipline', new_discipline_path
+/ = link_to 'New Discipline', new_discipline_path

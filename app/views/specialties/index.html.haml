@@ -1,5 +1,37 @@
 .content
   .section
+    %h1
+      Поиск специальностей
+
+    = form_tag(specialties_path, method: :get) do
+      %table
+        %thead
+          %tr
+            %th
+              =text_field_tag('full_direction', '',:placeholder => "Наименование или код направления подготовки", :style => "width:500px;")
+          %tr
+            %th
+              Уровень подготовки:
+              бакалавриат
+              =check_box_tag('level', '0')
+            %th
+              специалитет
+              =check_box_tag('level', '2')
+            %th
+              магистратура
+              =check_box_tag('level', '1')
+          %tr
+            %th
+              Форма обучения:
+              очная
+              =radio_button_tag('study_form', '0')
+            %th
+              очно-заочная
+              =radio_button_tag('study_form', '1')
+          %tr
+            %th
+              =submit_tag('Искать', :style => "margin-left:450px;")
+
     = form_tag(specialties_path, method: :get) do
       .row.table-title 
         -#.column Тип дисциплины
@@ -8,7 +40,7 @@
         .column Форма обучения
       - @specialties.each do |specialty|
         .row.hover-highlight{onclick: "doSmth(event)"}
-          -#  .column= specialty.human_dtype
+          -#.column= specialty.human_dtype
           .column= specialty.full_direction
           .column= specialty.human_level
           .column= specialty.human_study_form
@@ -19,5 +51,5 @@
             = link_to 'Edit', edit_specialty_path(specialty)
             = link_to 'Destroy', specialty, :method => :delete, :data => { :confirm => 'Are you sure?' }
           .hidden-column 
-            = render 'disciplines/index'
+            = render 'disciplines/index', special: specialty
   = link_to 'New Specialty', new_specialty_path

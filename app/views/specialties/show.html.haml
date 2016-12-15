@@ -1,5 +1,10 @@
 %p#notice= notice
 
+/   - @specialty.link_specialty_disciplines.each do |links|
+/      @specialty_gm = links.discipline.name.where(label = 'ГМ')
+/      @specialty_en = links.discipline.name.where(label = 'ЕНМ')
+/      @specialty_spec = links.discipline.name.where(label = 'ОПМ')
+
 %p
   %b Dtype:
   = @specialty.dtype
@@ -25,6 +30,6 @@
   %b Human study form:
   = @specialty.human_study_form
 
-= link_to 'Edit', edit_specialty_path(@specialty)
-\|
-= link_to 'Back', specialties_path
+/ = link_to 'Edit', edit_specialty_path(@specialty)
+
+/ = link_to 'Back', specialties_path
