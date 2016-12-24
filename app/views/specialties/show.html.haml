@@ -25,6 +25,7 @@
   %b Human study form:
   = @specialty.human_study_form
 
-= link_to 'Edit', edit_specialty_path(@specialty)
-\|
-= link_to 'Back', specialties_path
+- if current_user
+  = link_to 'Edit', edit_specialty_path(@specialty)
+  \|
+  = link_to 'Back', specialties_path

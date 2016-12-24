@@ -1,5 +1,6 @@
 class LinkSpecialtyDisciplinesController < ApplicationController
   before_action :set_link_specialty_discipline, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   # GET /link_specialty_disciplines
   # GET /link_specialty_disciplines.json

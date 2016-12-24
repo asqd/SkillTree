@@ -1,4 +1,4 @@
-%h1 Listing disciplines
+%h1 Дисциплины
 
 %table
   %thead
@@ -10,13 +10,15 @@
       %th
 
   %tbody
-    - @disciplines.each do |discipline|
-      %tr
-        %td= discipline.name
-        %td= discipline.label
-        %td= link_to 'Show', discipline
-        %td= link_to 'Edit', edit_discipline_path(discipline)
-        %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    - if @disciplines.present?
+      - @disciplines.each do |discipline|
+        %tr
+          %td= discipline.name
+          %td= discipline.label
+          %td= link_to 'Show', discipline
+          - if current_user
+            %td= link_to 'Edit', edit_discipline_path(discipline)
+            %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

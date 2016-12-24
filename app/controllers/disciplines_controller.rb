@@ -1,5 +1,6 @@
 class DisciplinesController < ApplicationController
   before_action :set_discipline, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   # GET /disciplines
   # GET /disciplines.json
@@ -51,6 +52,15 @@ class DisciplinesController < ApplicationController
     end
   end
 
+  def by_specialty
+    @specialty_id = params[:id]
+    @disciplines = Discipline.joins(:link_specialty_disciplines).where(link_specialty_disciplines: { specialty_id: params[:id] })
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @disciplines.as_json }
+    end
+  end
   # DELETE /disciplines/1
   # DELETE /disciplines/1.json
   def destroy

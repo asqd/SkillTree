@@ -1,0 +1,25 @@
+%header
+	.header-top
+		.container{:style=>"width:85%; margin: 0 auto;"}
+			%ul.header-top-nav
+				%li.header-top-nav__item
+					= link_to "На главную", root_path
+			%ul.header-login
+				- if user_signed_in?
+					%li.header-top-nav__item
+						= link_to current_user.full_name, edit_user_registration_path
+					%li.header-top-nav__item
+						= link_to "Выйти", destroy_user_session_path, method: :delete
+				- else
+					%li.header-top-nav__item
+						= link_to "Зарегистрироваться", new_user_registration_path
+					%li.header-top-nav__item
+						= link_to "Войти", new_user_session_path
+
+	.header-main
+		.container
+		.header-logo
+			%a{:href=>"#"}
+				%img{:src=>""}
+		.header-info
+			.header-title Деревья навыков студентов НИЯУ МИФИ

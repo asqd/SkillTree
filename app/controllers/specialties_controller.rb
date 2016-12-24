@@ -1,5 +1,6 @@
 class SpecialtiesController < ApplicationController
   before_action :set_specialty, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   # GET /specialties
   # GET /specialties.json
@@ -8,7 +9,6 @@ class SpecialtiesController < ApplicationController
       @specialties = @specialties.where("full_direction ilike ?", '%' + params['full_direction'].to_s + '%') if params['full_direction'].present?
       @specialties = @specialties.where("level = ?", params['level'].to_s) if params['level'].present?
       @specialties = @specialties.where("study_form = ?", params['study_form'].to_s) if params['study_form'].present?
-      @disciplines = Discipline.all
   end
 
   # GET /specialties/1
