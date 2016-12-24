@@ -51,6 +51,15 @@ class DisciplinesController < ApplicationController
     end
   end
 
+  def by_specialty
+    @specialty_id = params[:id]
+    @disciplines = Discipline.joins(:link_specialty_disciplines).where(link_specialty_disciplines: { specialty_id: params[:id] })
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @disciplines.as_json }
+    end
+  end
   # DELETE /disciplines/1
   # DELETE /disciplines/1.json
   def destroy

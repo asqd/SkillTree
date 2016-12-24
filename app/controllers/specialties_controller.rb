@@ -8,7 +8,6 @@ class SpecialtiesController < ApplicationController
       @specialties = @specialties.where("full_direction ilike ?", '%' + params['full_direction'].to_s + '%') if params['full_direction'].present?
       @specialties = @specialties.where("level = ?", params['level'].to_s) if params['level'].present?
       @specialties = @specialties.where("study_form = ?", params['study_form'].to_s) if params['study_form'].present?
-      @disciplines = @specialties.first.link_specialty_disciplines
   end
 
   # GET /specialties/1

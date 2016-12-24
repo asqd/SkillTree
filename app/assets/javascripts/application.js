@@ -16,22 +16,23 @@
 //= require turbolinks
 //= require_tree .
 
-function doSmth(event) {
-	if ($(event.target).parents(".row").find('.hidden-column').hasClass('show_disciplines') || 
-		$(event.target).find('.hidden-column').hasClass('show_disciplines')) 
-	{
-		$(event.target).parents(".row").find('.hidden-column').removeClass('show_disciplines');
-		$(event.target).find('.hidden-column').removeClass('show_disciplines');
-	}
-	else 
-	{
-		$(event.target).parents(".row").find('.hidden-column').addClass('show_disciplines');
-		$(event.target).find('.hidden-column').addClass('show_disciplines');
-	}
-	return false;
-}
-
 $(window).load(function(){
+	// accordion settings
+  $("#accordion").accordion({
+    collapsible: true,
+    autoHeight: false,
+    active: false
+	});
+
+  // make links in accordion works
+  $('#accordion a').click(function(e) { e.stopPropagation(); })
+
+	$('#accordion').find('.row').bind('click', function() {
+    var id = $(this).data('id');
+    $.getScript('/disciplines/by_specialty/' + parseInt(id), function(){
+    })
+	});
+
 
 	$(window).bind('scroll', function(e) {
 		scrolled()
@@ -53,7 +54,7 @@ $(window).load(function(){
 				flag = true
 			}
 		}
-		if($scrolled < $header) 
+		if($scrolled < $header)
 		{
 			if(flag == true)
 			{
@@ -63,10 +64,3 @@ $(window).load(function(){
 		}
 	}
 });
-// function doSmth(event) {
-//     if ($(this).find('.hidden-column').hasClass('show_disciplines'))
-// 		$(this).find('.hidden-column').removeClass('show_disciplines')
-// 	else 
-// 		$(this).find('.hidden-column').addClass('show_disciplines');
-// 	return false;
-// };
