@@ -3,12 +3,19 @@
 		.container{:style=>"width:85%; margin: 0 auto;"}
 			%ul.header-top-nav
 				%li.header-top-nav__item
-					%a{:href=>"#"} Привет
-				%li.header-top-nav__item
-					%a{:href=>"#"} Прощай
+					= link_to "На главную", root_path
 			%ul.header-login
-				%li.header-top-nav__item
-					%a Здесь login и избранное
+				- if user_signed_in?
+					%li.header-top-nav__item
+						= link_to current_user.full_name, edit_user_registration_path
+					%li.header-top-nav__item
+						= link_to "Выйти", destroy_user_session_path, method: :delete
+				- else
+					%li.header-top-nav__item
+						= link_to "Зарегистрироваться", new_user_registration_path
+					%li.header-top-nav__item
+						= link_to "Войти", new_user_session_path
+
 	.header-main
 		.container
 		.header-logo

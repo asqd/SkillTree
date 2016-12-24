@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :link_specialty_disciplines
   resources :specialties
   resources :disciplines

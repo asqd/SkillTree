@@ -16,8 +16,9 @@
           %td= discipline.name
           %td= discipline.label
           %td= link_to 'Show', discipline
-          %td= link_to 'Edit', edit_discipline_path(discipline)
-          %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          - if current_user
+            %td= link_to 'Edit', edit_discipline_path(discipline)
+            %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

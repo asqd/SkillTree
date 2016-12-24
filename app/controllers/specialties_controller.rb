@@ -1,5 +1,6 @@
 class SpecialtiesController < ApplicationController
   before_action :set_specialty, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   # GET /specialties
   # GET /specialties.json

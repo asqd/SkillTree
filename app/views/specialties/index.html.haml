@@ -48,8 +48,9 @@
             = link_to 'Показать дерево', specialty
           .column.link
             = link_to 'Show', specialty
-            = link_to 'Edit', edit_specialty_path(specialty)
-            = link_to 'Destroy', specialty, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            - if current_user
+              = link_to 'Edit', edit_specialty_path(specialty)
+              = link_to 'Destroy', specialty, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
           %div{id: "list-#{specialty.id}", class: "disciplines-list"}
 

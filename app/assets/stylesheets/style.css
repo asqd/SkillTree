@@ -5,12 +5,12 @@ body {
 
 .content {
 	background: #f7f7f7;
-	padding: 60px 8px 50px;
+	padding: 80px 8px 50px;
 }
 .section {
 	background: #fff;
 	max-width: 90%;
-	padding: 20px 0 0;
+	/*padding: 20px 0 0;*/
 	margin: auto;
 }
 .column {
