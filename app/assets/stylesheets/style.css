@@ -37,5 +37,13 @@ body {
 
 .show_disciplines {
 	display: block !important;
-	background-color: #74B5E3		
+	background-color: #74B5E3
+}
+
+#accordion .row[aria-expanded='true'] .disciplines-list {
+	display: block;
+}
+
+#accordion .row[aria-expanded='false'] .disciplines-list {
+	display: none;
 }
