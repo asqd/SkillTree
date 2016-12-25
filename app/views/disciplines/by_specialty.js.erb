@@ -1,2 +1,3 @@
+$("#list-<%= @specialty_id %>").empty()
 $("#list-<%= @specialty_id %>").append("<%= j render 'disciplines/index' %>");
 $('.disciplines-list').click(function(e) { e.stopPropagation(); })

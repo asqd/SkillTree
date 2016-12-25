@@ -1,0 +1,35 @@
+= form_tag(specialties_path, method: :get, class: 'mb-3') do
+  .form-group.row
+    .col-sm-9
+      =text_field_tag('full_direction', '',:placeholder => "Наименование или код направления подготовки", class: 'form-control')
+
+  .form-group.row
+    .col-sm-9
+      .form-check.pull-left
+        %label Уровень подготовки:
+      .form-check.pull-left
+        %label.form-check-label.align-middle
+          =check_box_tag('level', '0')
+          бакалавриат
+        %label.form-check-label.align-middle
+          =check_box_tag('level', '2')
+          специалитет
+        %label.form-check-label.align-middle
+          =check_box_tag('level', '1')
+          магистратура
+
+  .form-group.row
+    .col-sm-9
+      .form-check.pull-left
+        %label Форма обучения:
+      .form-check.pull-left
+        %label.form-check-label.align-middle
+          =radio_button_tag('study_form', '0')
+          очная
+        %label.form-check-label.align-middle
+          =radio_button_tag('study_form', '1')
+          очно-заочная
+
+  .form-group.row
+    .col-sm-9
+      =submit_tag('Искать', class: 'btn btn-primary')

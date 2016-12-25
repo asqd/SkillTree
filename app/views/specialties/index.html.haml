@@ -1,57 +1,13 @@
 .section
-  %h1
+  %h1.mb-2
     Список специальностей
 
-  = form_tag(specialties_path, method: :get) do
-    %table
-      %thead
-        %tr
-          %th{colspan:2}
-            Наименование или код направления подготовки:
-            =text_field_tag('full_direction', '',:placeholder => "Наименование или код направления подготовки")
-        %tr
-          %th
-            Уровень подготовки:
-            бакалавриат
-            =check_box_tag('level', '0')
-          %th
-            специалитет
-            =check_box_tag('level', '2')
-          %th
-            магистратура
-            =check_box_tag('level', '1')
-        %tr
-          %th
-            Форма обучения:
-            очная
-            =radio_button_tag('study_form', '0')
-          %th
-            очно-заочная
-            =radio_button_tag('study_form', '1')
-        %tr
-          %th{colspan:5}
-            =submit_tag('Искать')
+  = render 'partials/search_form'
 
-    .row.table-title
-      -#.column Тип дисциплины
-      .column Наименование подготовки
-      .column Уровень обучения
-      .column Форма обучения
-    #accordion
-      - @specialties.each do |specialty|
-        .row.hover-highlight{"data-id" => "#{specialty.id}"}
-          -#  .column= specialty.human_dtype
-          .column= specialty.full_direction
-          .column= specialty.human_level
-          .column= specialty.human_study_form
-          .column.link
-            = link_to 'Показать дерево', specialty
-          .column.link
-            = link_to 'Show', specialty
-            - if current_user
-              = link_to 'Edit', edit_specialty_path(specialty)
-              = link_to 'Destroy', specialty, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-          %div{id: "list-#{specialty.id}", class: "disciplines-list"}
+  .row.table-title
+  #accordion
+    - @specialties.each do |specialty|
+      .row
+        = render specialty
 
 = link_to 'New Specialty', new_specialty_path

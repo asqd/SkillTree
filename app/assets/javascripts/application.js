@@ -13,21 +13,28 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require_tree .
+//= require tether
+//= require bootstrap
 
 $(window).load(function(){
 	// accordion settings
-  $("#accordion").accordion({
+  $("#accordion .specialty-row").accordion({
     collapsible: true,
     autoHeight: false,
-    active: false
+    active: false,
+    navigation: true,
+    heightStyle: "content"
 	});
 
   // make links in accordion works
-  $('#accordion a').click(function(e) { e.stopPropagation(); })
+  $('#accordion a').click(function(e) {
+    if (!$(this).hasClass('delete-link')) {
+      e.stopPropagation();
+    }
+  })
 
-	$('#accordion').find('.row').bind('click', function() {
+	$('#accordion').find('.specialty-row').bind('click', function() {
     var id = $(this).data('id');
     $.getScript('/disciplines/by_specialty/' + parseInt(id), function(){
     })

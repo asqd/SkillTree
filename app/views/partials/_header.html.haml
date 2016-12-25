@@ -1,25 +1,18 @@
 %header
 	.header-top
-		.container{:style=>"width:85%; margin: 0 auto;"}
-			%ul.header-top-nav
-				%li.header-top-nav__item
-					= link_to "На главную", root_path
-			%ul.header-login
+		%nav.navbar.navbar-light.bg-faded
+			%ul.nav.navbar-nav.ml-2
+				%li.nav-item
+					= link_to "Деревья навыков студентов НИЯУ МИФИ", root_path, class_name: "nav-link"
+
+			%ul.nav.navbar-nav.pull-right.mr-3
 				- if user_signed_in?
-					%li.header-top-nav__item
+					%li.nav-item
 						= link_to current_user.full_name, edit_user_registration_path
-					%li.header-top-nav__item
+					%li.nav-item
 						= link_to "Выйти", destroy_user_session_path, method: :delete
 				- else
-					%li.header-top-nav__item
+					%li.nav-item
 						= link_to "Зарегистрироваться", new_user_registration_path
-					%li.header-top-nav__item
+					%li.nav-item
 						= link_to "Войти", new_user_session_path
-
-	.header-main
-		.container
-			.header-logo
-				%a{:href=>"#"}
-					%img{:src=>"https://mephi.ru/bitrix/templates/mephi_new/img/logo-m.png", :style=>"height: 65px; margin-left: 15px;"}
-			.header-info
-				.header-title Деревья навыков студентов НИЯУ МИФИ

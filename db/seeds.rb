@@ -15,11 +15,13 @@ json.each do |rec|
   specialty = Specialty.create(rec.slice(*s_cols))
   rec["rows"].each do |row|
     row["courses"].each do |course|
-      d_cols = Discipline.column_names
-      discipline = Discipline.create(course.slice(*d_cols))
-      course["course_hours"].each do |hours|
-        l_cols = LinkSpecialtyDiscipline.column_names
-        hour = LinkSpecialtyDiscipline.create(hours.slice(*l_cols).merge({"specialty" => specialty, "discipline" => discipline}))
+      if course['label'].present? && course['label'].size > 8
+        d_cols = Discipline.column_names
+        discipline = Discipline.create(course.slice(*d_cols))
+        course["course_hours"].each do |hours|
+          l_cols = LinkSpecialtyDiscipline.column_names
+          hour = LinkSpecialtyDiscipline.create(hours.slice(*l_cols).merge({"specialty" => specialty, "discipline" => discipline}))
+        end
       end
     end
   end
