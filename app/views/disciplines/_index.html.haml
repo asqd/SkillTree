@@ -1,25 +1,62 @@
-%h1 Дисциплины
+.row
+- if @natural_science_disciplines.present?
+  .col-md-4
+    %h3
+      Естественно-научные
+      %span.text-danger
+        =@natural_science_disciplines.size
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Label
-      %th
-      %th
-      %th
+    - @natural_science_disciplines.each do |discipline|
+      .card.card-outline-danger
+        .card-block
+          %blockquote.card-blockquote
+            %div
+              = link_to "#{discipline.name}", discipline_path(discipline.id)
+            - discipline.courses.each do |course|
+              %div
+                = course.human_htype
+                \|
+                = course.hours
+                часов
 
-  %tbody
-    - if @disciplines.present?
-      - @disciplines.each do |discipline|
-        %tr
-          %td= discipline.name
-          %td= discipline.label
-          %td= link_to 'Show', discipline
-          - if current_user
-            %td= link_to 'Edit', edit_discipline_path(discipline)
-            %td= link_to 'Destroy', discipline, :method => :delete, :data => { :confirm => 'Are you sure?' }
+- if @humanities_science_disciplines.present?
+  .col-md-4
+    %h3
+      Гуманитарные
+      %span.text-success
+        =@humanities_science_disciplines.size
 
-%br
+    - @humanities_science_disciplines.each do |discipline|
+      .card.card-outline-success
+        .card-block
+          %blockquote.card-blockquote
+            %div
+              = link_to "#{discipline.name}", discipline_path(discipline.id)
+            - discipline.courses.each do |course|
+              %div
+                = course.human_htype
+                \|
+                = course.hours
+                часов
+
+- if @special_disciplines.present?
+  .col-md-4
+    %h3
+      Специальные
+      %span.text-info
+        =@special_disciplines.size
+
+    - @special_disciplines.each do |discipline|
+      .card.card-outline-info
+        .card-block
+          %blockquote.card-blockquote
+            %div
+              = link_to "#{discipline.name}", discipline_path(discipline.id)
+            - discipline.courses.each do |course|
+              %div
+                = course.human_htype
+                \|
+                = course.hours
+                часов
 
 = link_to 'New Discipline', new_discipline_path

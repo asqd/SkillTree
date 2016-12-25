@@ -1,0 +1,16 @@
+.row.specialty-row.hover-highlight{"data-id" => "#{specialty.id}"}
+  .card.card-outline-warning
+    .card-block
+      %blockquote.card-blockquote
+        %div
+          = link_to "#{specialty.full_direction}", specialty
+        %div
+          =specialty.human_level
+          \|
+          =specialty.human_study_form
+        - if current_user
+          %footer
+            = link_to 'Редактировать', edit_specialty_path(specialty)
+            = link_to 'Удалить', specialty, class: 'delete-link', :method => :delete, :data => { :confirm => "Удалить #{specialty.full_direction}?" }
+
+  %div{id: "list-#{specialty.id}", class: "disciplines-list"}
