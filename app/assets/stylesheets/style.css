@@ -4,8 +4,8 @@ body {
 
 
 .content {
-	background: #f7f7f7;
-	padding: 80px 8px 50px;
+	background: #fafafa;
+	padding: 60px 8px 50px;
 }
 .section {
 	background: #fff;
@@ -26,7 +26,7 @@ body {
 	padding-top: 11px;
 }
 .hover-highlight:hover {
-	background: #E59C50;
+	background: #d7ebfb;
 }
 
 
@@ -37,7 +37,7 @@ body {
 
 .show_disciplines {
 	display: block !important;
-	background-color: #74B5E3
+	background-color: #fae9d7; 
 }
 
 #accordion .row[aria-expanded='true'] .disciplines-list {
