@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161224211326) do
+ActiveRecord::Schema.define(version: 20170305104428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20161224211326) do
     t.string   "label"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "zet"
+    t.boolean  "practice?"
   end
 
   create_table "link_specialty_disciplines", force: :cascade do |t|
@@ -28,9 +30,11 @@ ActiveRecord::Schema.define(version: 20161224211326) do
     t.string   "human_htype"
     t.integer  "specialty_id"
     t.integer  "discipline_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "hours"
+    t.string   "human_short_htype"
+    t.integer  "term_number"
     t.index ["discipline_id"], name: "index_link_specialty_disciplines_on_discipline_id", using: :btree
     t.index ["specialty_id"], name: "index_link_specialty_disciplines_on_specialty_id", using: :btree
   end
@@ -46,6 +50,9 @@ ActiveRecord::Schema.define(version: 20161224211326) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "full_direction"
+    t.string   "code"
+    t.string   "profile"
+    t.string   "qualification"
   end
 
   create_table "users", force: :cascade do |t|

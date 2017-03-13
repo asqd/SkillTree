@@ -6,23 +6,34 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-fn = "/db/courses.json"
-json = JSON.parse(open("#{Rails.root}#{fn}").read)
-
-json.each do |rec|
-  print "\r Creating record #{rec["id"]}"
-  s_cols = Specialty.column_names
-  specialty = Specialty.create(rec.slice(*s_cols))
-  rec["rows"].each do |row|
-    row["courses"].each do |course|
-      if course['label'].present? && course['label'].size > 8
-        d_cols = Discipline.column_names
-        discipline = Discipline.create(course.slice(*d_cols))
-        course["course_hours"].each do |hours|
-          l_cols = LinkSpecialtyDiscipline.column_names
-          hour = LinkSpecialtyDiscipline.create(hours.slice(*l_cols).merge({"specialty" => specialty, "discipline" => discipline}))
+def create_records(json)
+  json.each do |rec|
+    unless rec["code"] == "00.00.00"
+      print "\r Creating record #{rec["id"]}"
+      s_cols = Specialty.column_names - ["id"]
+      specialty = Specialty.find_or_create_by(rec.slice(*s_cols))
+      rec["rows"].each do |row|
+        row["courses"].each do |course|
+          if course['label'].present? && course['label'].size > 8
+            d_cols = Discipline.column_names - ["id"]
+            # discipline = Discipline.find_or_create(course.slice(*d_cols))
+            discipline = Discipline.find_by(name: course["name"])
+            discipline = Discipline.create(course.slice(*d_cols)) if discipline.blank?
+            course["course_hours"].each do |hours|
+              l_cols = LinkSpecialtyDiscipline.column_names - ["id"]
+              hour = LinkSpecialtyDiscipline.create(hours.slice(*l_cols).merge({"specialty" => specialty, "discipline" => discipline}))
+            end
+          end
         end
       end
     end
   end
 end
+
+courses_autumn = "/db/courses_autumn.json"
+json = JSON.parse(open("#{Rails.root}#{courses_autumn}").read)
+create_records(json)
+
+courses_spring = "/db/courses_spring.json"
+json = JSON.parse(open("#{Rails.root}#{courses_spring}").read)
+create_records(json)

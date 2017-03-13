@@ -13,9 +13,12 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  full_direction   :string
+#  code             :string
+#  profile          :string
+#  qualification    :string
 #
 
 class Specialty < ApplicationRecord
   has_many :link_specialty_disciplines
-  has_many :disciplines, through: :link_specialty_disciplines
+  has_many :disciplines, -> { uniq }, through: :link_specialty_disciplines
 end

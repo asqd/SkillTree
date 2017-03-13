@@ -13,6 +13,9 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  full_direction   :string
+#  code             :string
+#  profile          :string
+#  qualification    :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
