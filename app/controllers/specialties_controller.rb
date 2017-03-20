@@ -5,13 +5,13 @@ class SpecialtiesController < ApplicationController
   # GET /specialties
   # GET /specialties.json
   def index
-      natural_science_cond = "disciplines.label ILIKE '%-ЕНМ.%'"
-      humanities_cond = "disciplines.label ILIKE '%-ГМ.%'"
-      # limit 50 records
-      @specialties = Specialty.joins(:disciplines).where("#{natural_science_cond} OR #{humanities_cond}").distinct.limit(50)
-      @specialties = @specialties.where("full_direction ilike ?", '%' + params['full_direction'].to_s + '%') if params['full_direction'].present?
-      @specialties = @specialties.where("level = ?", params['level'].to_s) if params['level'].present?
-      @specialties = @specialties.where("study_form = ?", params['study_form'].to_s) if params['study_form'].present?
+      # natural_science_cond = "disciplines.label ILIKE '%-ЕНМ.%'"
+      # humanities_cond = "disciplines.label ILIKE '%-ГМ.%'"
+      # # limit 50 records
+      # @specialties = Specialty.joins(:disciplines).where("#{natural_science_cond} OR #{humanities_cond}").distinct.limit(50)
+      # @specialties = @specialties.where("full_direction ilike ?", '%' + params['full_direction'].to_s + '%') if params['full_direction'].present?
+      # @specialties = @specialties.where("level = ?", params['level'].to_s) if params['level'].present?
+      # @specialties = @specialties.where("study_form = ?", params['study_form'].to_s) if params['study_form'].present?
   end
 
   # GET /specialties/1
