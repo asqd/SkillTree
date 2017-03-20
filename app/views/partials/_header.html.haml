@@ -1,18 +1,15 @@
 %header
 	.header-top
-		%nav.navbar.navbar-light.bg-faded
-			%ul.nav.navbar-nav.ml-2
-				%li.nav-item
-					= link_to "Деревья навыков студентов НИЯУ МИФИ", root_path, class_name: "nav-link"
-
+		%nav.navbar.navbar-light.navbar-toggleable-md{style: "background-color: #28828a;"}
+			= link_to "Деревья навыков студентов НИЯУ МИФИ", root_path, class: "navbar-brand text-white mr-auto"
 			%ul.nav.navbar-nav.pull-right.mr-3
 				- if user_signed_in?
 					%li.nav-item
 						= link_to current_user.full_name, edit_user_registration_path
 					%li.nav-item
-						= link_to "Выйти", destroy_user_session_path, method: :delete
+						= link_to "Выйти", destroy_user_session_path, method: :delete, class: "nav-link text-white"
 				- else
 					%li.nav-item
-						= link_to "Зарегистрироваться", new_user_registration_path
+						= link_to "Зарегистрироваться", new_user_registration_path, class: "nav-link text-white"
 					%li.nav-item
-						= link_to "Войти", new_user_session_path
+						= link_to "Войти", new_user_session_path, class: "nav-link text-white"

@@ -20,5 +20,8 @@
 
 class Specialty < ApplicationRecord
   has_many :link_specialty_disciplines
-  has_many :disciplines, -> { uniq }, through: :link_specialty_disciplines
+  has_many :disciplines, -> { distinct }, through: :link_specialty_disciplines
+
+  ### Scopes
+  scope :directions, -> { group(:direction, :human_level, :id).distinct(:direction) }
 end

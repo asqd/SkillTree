@@ -8,7 +8,7 @@
 
 def create_records(json)
   json.each do |rec|
-    unless rec["code"] == "00.00.00"
+    unless rec["code"] == "00.00.00" || rec["direction"] == "---------------" || rec["direction"].include?("подготовки:")
       print "\r Creating record #{rec["id"]}"
       s_cols = Specialty.column_names - ["id"]
       specialty = Specialty.find_or_create_by(rec.slice(*s_cols))
@@ -21,7 +21,7 @@ def create_records(json)
             discipline = Discipline.create(course.slice(*d_cols)) if discipline.blank?
             course["course_hours"].each do |hours|
               l_cols = LinkSpecialtyDiscipline.column_names - ["id"]
-              hour = LinkSpecialtyDiscipline.create(hours.slice(*l_cols).merge({"specialty" => specialty, "discipline" => discipline}))
+              hour = LinkSpecialtyDiscipline.find_or_create_by(hours.slice(*l_cols).merge({"specialty_id" => specialty.id, "discipline_id" => discipline.id}))
             end
           end
         end

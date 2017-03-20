@@ -1,13 +1,15 @@
-.section
-  %h1.mb-2
-    Список специальностей
+/ .section
+/   %h1.mb-2
+/     Список специальностей
 
-  = render 'partials/search_form'
+/   = render 'partials/search_form'
 
-  .row.table-title
-  #accordion
-    - @specialties.each do |specialty|
-      .row
-        = render specialty
+/   .row.table-title
+/   #accordion
+/     - @specialties.each do |specialty|
+/       .row
+/         = render specialty
 
-= link_to 'New Specialty', new_specialty_path
+/ = link_to 'New Specialty', new_specialty_path
+
+= react_component 'SpecialtiesApp'

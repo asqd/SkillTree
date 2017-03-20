@@ -8,4 +8,12 @@ Rails.application.routes.draw do
 
   root 'specialties#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  namespace :api do
+    resources :specialties do
+      get 'disciplines', on: :member
+      get 'group_list', on: :collection
+    end
+    get 'disciplines' => 'disciplines#index'
+  end
 end

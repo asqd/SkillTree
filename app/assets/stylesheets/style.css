@@ -22,13 +22,18 @@ body {
 	font-weight: 600;
 }
 
-.hover-highlight {
+/*.hover-highlight {
 	padding-top: 11px;
-}
-.hover-highlight:hover {
-	/*background: #E59C50;*/
-}
+}*/
 
+/*.hover-highlight:hover {
+	background: #E59C50;
+}*/
+/*.container.main div .row:hover,*/
+.hover-highlight:hover {
+	background: #288282;
+	color: #fff;
+}
 
 .hidden-column {
 	display: none;
@@ -55,4 +60,16 @@ body {
 
 .pull-right {
 	float: right;
+}
+
+.navbar.navbar-light {
+	border-radius: 0px;
+}
+
+.section .jumbotron {
+	padding: 2em 1em;
+}
+
+.main.container {
+	cursor: pointer;
 }
