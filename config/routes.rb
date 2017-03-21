@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   get 'disciplines/by_specialty/:id' => 'disciplines#by_specialty'
 
-  root 'specialties#index'
+  root 'index#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  get '/specialties/:id' => 'specialties#show'
   namespace :api do
     resources :specialties do
       get 'disciplines', on: :member
