@@ -20,6 +20,30 @@
 //= require tether
 //= require bootstrap
 
+window.htypes = {
+  "Зач": "Зачет",
+  "К/п": "Курсовые проекты",
+  "К/р": "Курсовые работы",
+  "КСР": "Контроль самостоятельной работы",
+  "Лаб": "Лабораторные работы",
+  "Лек": "Лекции",
+  "Пр": "Практические занятия",
+  "СРС": "Самостоятельная работа студента",
+  "Экз": "Экзамен"
+}
+
+window.htype_bages = {
+  "Зач": "warning",
+  "К/п": "default",
+  "К/р": "default",
+  "КСР": "info",
+  "Лаб": "info",
+  "Лек": "success",
+  "Пр": "info",
+  "СРС": "default",
+  "Экз": "warning"
+}
+
 $(window).load(function(){
 	// accordion settings
   $("#accordion .specialty-row").accordion({

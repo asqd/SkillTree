@@ -49,19 +49,16 @@ var Specialty = React.createClass({
     var specialty = this.props.specialty;
     return(
       <div className="mt-2">
-        <div className="row py-2 px-0 hover-highlight" data-toggle="collapse" href={'#' + this.props.componentId} onClick={this.handleExpandDiscipline}>
-          <div className="col">
-            {specialty.profile}
+        <a href={"/specialties/" + specialty.id} target="_blank">
+          <div className="row py-2 px-0 hover-highlight">
+              <div className="col-8">
+                {specialty.profile}
+              </div>
+              <div className="col">
+                {specialty.human_study_form}
+              </div>
           </div>
-          <div className="col">
-            {specialty.human_study_form}
-          </div>
-        </div>
-        <div className="collapse mt-2" id={this.props.componentId}>
-          <div className="card card-block">
-            {this.state.disciplineList}
-          </div>
-        </div>
+        </a>
       </div>
     )
   }

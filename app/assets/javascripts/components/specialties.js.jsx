@@ -11,7 +11,7 @@ var Specialties = React.createClass({
     return(
       <div className="container main">
         <div className="row">
-          <div className="col">
+          <div className="col-8">
             Профиль
           </div>
           <div className="col">

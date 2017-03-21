@@ -23,5 +23,7 @@ class Specialty < ApplicationRecord
   has_many :disciplines, -> { distinct }, through: :link_specialty_disciplines
 
   ### Scopes
-  scope :directions, -> { group(:direction, :human_level, :id).distinct(:direction) }
+  scope :directions, -> { group(:direction, :human_level, :code).select("direction, human_level, code") }
+
+  scope :with_term_number, -> { joins(:link_specialty_disciplines).select("specialties.*, count(distinct link_specialty_disciplines.term_number) as terms_count").group(:id) }
 end

@@ -1,31 +1,33 @@
-%p#notice= notice
+/ %p#notice= notice
 
-%p
-  %b Dtype:
-  = @specialty.dtype
-%p
-  %b Human dtype:
-  = @specialty.human_dtype
-%p
-  %b Direction:
-  = @specialty.direction
-%p
-  %b Full direction:
-  = @specialty.full_direction
-%p
-  %b Level:
-  = @specialty.level
-%p
-  %b Human level:
-  = @specialty.human_level
-%p
-  %b Study form:
-  = @specialty.study_form
-%p
-  %b Human study form:
-  = @specialty.human_study_form
+/ %p
+/   %b Dtype:
+/   = @specialty.dtype
+/ %p
+/   %b Human dtype:
+/   = @specialty.human_dtype
+/ %p
+/   %b Direction:
+/   = @specialty.direction
+/ %p
+/   %b Full direction:
+/   = @specialty.full_direction
+/ %p
+/   %b Level:
+/   = @specialty.level
+/ %p
+/   %b Human level:
+/   = @specialty.human_level
+/ %p
+/   %b Study form:
+/   = @specialty.study_form
+/ %p
+/   %b Human study form:
+/   = @specialty.human_study_form
 
-- if current_user
-  = link_to 'Edit', edit_specialty_path(@specialty)
-  \|
-  = link_to 'Back', specialties_path
+/ - if current_user
+/   = link_to 'Edit', edit_specialty_path(@specialty)
+/   \|
+/   = link_to 'Back', specialties_path
+
+= react_component 'SpecialtyApp', specialty: @specialty

@@ -46,8 +46,12 @@ var SpecialtiesApp = React.createClass({
   render: function() {
     return(
       <div className="section">
-        <div className="jumbotron">
-          <h1>Список специальностей</h1>
+        <div className="card border-0">
+          <div className="card-block">
+            <h1 className="card-title">
+              Список специальностей НИЯУ МИФИ
+            </h1>
+          </div>
         </div>
         <div className="container">
           <ul className="nav nav-tabs">

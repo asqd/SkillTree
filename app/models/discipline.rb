@@ -37,8 +37,10 @@ class Discipline < ApplicationRecord
   scope :variable_elective, -> { where("label ILIKE '%.В.ДВ%'") }
 
   scope :with_links, -> { joins(:link_specialty_disciplines)
-                          .select("disciplines.*, link_specialty_disciplines.term_number,string_agg(DISTINCT link_specialty_disciplines.human_htype::varchar,',')")
-                          .group(:id, "link_specialty_disciplines.term_number")
+                          .select("disciplines.*,string_agg(DISTINCT link_specialty_disciplines.human_htype::varchar,',') as htypes,
+                          string_agg(DISTINCT link_specialty_disciplines.human_short_htype::varchar,',') as short_htypes,
+                          string_agg(DISTINCT link_specialty_disciplines.term_number::varchar,',') as terms")
+                          .group(:id)
                         }
 
   scope :with_links_by_params, -> (params={}) { with_links.where_by_params(params) }
@@ -51,5 +53,30 @@ class Discipline < ApplicationRecord
     end
 
     where(where_query.join(" AND "))
+  end
+
+  ### methods and helpers
+  def human_label
+    case
+    when label.include?("-ГМ")
+      "Гуманитарный"
+    when label.include?("-ОНМ")
+      "Общенаучный"
+    when label.include?("-ОПМ")
+      "Общепрофессиональный"
+    when label.include?("-ПМ")
+      "Профессиональный"
+    when label.include?("-ЕНМ")
+      "Естественнонаучный"
+    when label.include?("-ИПМ")
+      "Информационно-правовой"
+    else
+      label
+    end
+  end
+
+  def sorted_short_htype
+    order = ['Лек', 'Лаб', 'Пр', 'СРС', 'КСР', 'К/п', 'К/р', 'Зач', 'Экз']
+    ApplicationController.helpers.custom_sort(short_htypes.split(','), order)
   end
 end
