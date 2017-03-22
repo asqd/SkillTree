@@ -1,0 +1,32 @@
+{
+  "name": "skill_tree",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PoroshkinaVV/SkillTree.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PoroshkinaVV/SkillTree/issues"
+  },
+  "homepage": "https://github.com/PoroshkinaVV/SkillTree#readme",
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "browserify-incremental": "^3.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-search": "^2.0.5"
+  }
+}

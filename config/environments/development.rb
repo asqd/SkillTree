@@ -56,4 +56,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.react.variant = :development
+  config.browserify_rails.source_map_environments << "development"
+  config.browserify_rails.commandline_options = "-t [ babelify --presets [ es2015 react ] ]"
+  config.browserify_rails.evaluate_node_modules = true
 end
