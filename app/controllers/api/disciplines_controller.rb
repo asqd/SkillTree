@@ -2,7 +2,7 @@ module Api
   class DisciplinesController < ApplicationController
     before_action :check_params
     def index
-      render json: @disciplines.to_json(methods: [:human_label, :sorted_short_htype])#.map(&:attributes)
+      render json: @disciplines.to_json(methods: [:human_label, :sorted_short_htype])
     end
 
     def check_params

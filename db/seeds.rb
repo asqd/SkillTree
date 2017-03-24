@@ -21,7 +21,8 @@ def create_records(json)
             discipline = Discipline.create(course.slice(*d_cols)) if discipline.blank?
             course["course_hours"].each do |hours|
               l_cols = LinkSpecialtyDiscipline.column_names - ["id"]
-              hour = LinkSpecialtyDiscipline.find_or_create_by(hours.slice(*l_cols).merge({"specialty_id" => specialty.id, "discipline_id" => discipline.id}))
+              hour = LinkSpecialtyDiscipline.find_by(hours.slice(*(l_cols - ["hours"])).merge({"specialty_id" => specialty.id, "discipline_id" => discipline.id}))
+              hour = LinkSpecialtyDiscipline.create(hours.slice(*l_cols).merge({"specialty_id" => specialty.id, "discipline_id" => discipline.id})) if hour.blank?
             end
           end
         end

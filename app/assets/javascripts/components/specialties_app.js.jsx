@@ -3,6 +3,8 @@ var SpecialtiesApp = React.createClass({
     return {  specialties: [],
               specialtiesGroupList: [],
               directions: [],
+              searchResults: [],
+              query: "",
               currentGroup: "Бакалавриат"
     };
   },
@@ -43,21 +45,52 @@ var SpecialtiesApp = React.createClass({
     this.setState({directions: this.state.specialtiesGroupList[this.state.currentGroup]});
   },
 
+  handleSearch: function(results, query) {
+    this.setState({ query: query });
+    this.setState({ searchResults: results });
+  },
+
+  /// render helpers
+  searchResults: function() {
+    return (
+      <span>
+        <Specialties specialties={this.state.searchResults} search={true}/>
+      </span>
+    )
+  },
+
+  directions: function() {
+    return (
+      <span>
+        <ul className="nav nav-tabs">
+          {this.groupListComponents()}
+        </ul>
+          <Directions directions={this.state.directions} humanLevel={this.state.currentGroup} />
+      </span>
+    )
+  },
+
+  renderContent: function() {
+    if (this.state.searchResults.length == 0 && this.state.query.length == 0) {
+      return this.directions()
+    } else {
+      return this.searchResults()
+    }
+  },
+
   render: function() {
-    return(
+    return (
       <div className="section">
         <div className="card border-0">
           <div className="card-block">
             <h1 className="card-title">
               Список специальностей НИЯУ МИФИ
             </h1>
+            <SearchForm handleSearch={this.handleSearch} query={this.state.query}/>
           </div>
         </div>
         <div className="container">
-          <ul className="nav nav-tabs">
-            {this.groupListComponents()}
-          </ul>
-          <Directions directions={this.state.directions} humanLevel={this.state.currentGroup} />
+          {this.renderContent()}
         </div>
       </div>
     )

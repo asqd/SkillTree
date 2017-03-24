@@ -2,6 +2,7 @@ module Api
   class SpecialtiesController < ApplicationController
 
     before_action :get_group_list, only: :group_list
+
     def index
       filter = filter_params
       render json: Specialty.where(filter)
@@ -10,6 +11,23 @@ module Api
     def group_list
       render json: @group_list
 
+    end
+
+    def search
+      query = params[:query]
+      @specialties = case
+      when query.present?
+        Specialty.where("profile ILIKE ? OR direction ILIKE ? OR code ILIKE ?", *["%#{query}%"]*3)
+      else
+        []
+      end
+
+      if query.present? && params[:human_levels].present?
+        human_levels = params[:human_levels].map {|hl| "%#{hl}%"}
+        @specialties = @specialties.where("human_level ILIKE ANY(array[?])", human_levels)
+      end
+
+      render json: @specialties
     end
 
     def disciplines
@@ -28,5 +46,6 @@ module Api
 
       params.slice(*permitted_params).permit(permitted_params)
     end
+
   end
 end

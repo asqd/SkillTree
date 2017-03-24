@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery-throttle-debounce
 //= require react
 //= require react_ujs
 //= require components
