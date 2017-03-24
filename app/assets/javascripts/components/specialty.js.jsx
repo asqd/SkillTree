@@ -1,8 +1,10 @@
 var Specialty = React.createClass({
   propTypes: {
-    direction: React.PropTypes.string,
-    human_level: React.PropTypes.string,
-    human_study_form: React.PropTypes.string,
+    specialty: React.PropTypes.shape({
+      direction: React.PropTypes.string,
+      human_level: React.PropTypes.string,
+      human_study_form: React.PropTypes.string,
+    })
   },
 
   getInitialState: function() {
@@ -32,10 +34,6 @@ var Specialty = React.createClass({
 
   },
 
-  componentDidMount: function() {
-    // console.log(this.props)
-  },
-
   handleExpandDiscipline: function() {
     this.setState({ isExpanded: !this.state.isExpanded })
     if (!this.state.isExpanded) {
@@ -45,19 +43,54 @@ var Specialty = React.createClass({
     }
   },
 
+  regularSpecialty: function() {
+    var specialty = this.props.specialty;
+    return (
+      <div className="row py-2 px-0 hover-highlight">
+        <div className="col-7">
+          {specialty.profile}
+        </div>
+        <div className="col">
+          {specialty.human_study_form}
+        </div>
+      </div>
+    )
+  },
+
+  specialtyForSearch: function() {
+    var specialty = this.props.specialty;
+
+    return (
+      <div className="row py-2 px-0 hover-highlight">
+        <div className="col-1">
+          {specialty.code}
+        </div>
+        <div className="col-7">
+          {specialty.profile}
+        </div>
+        <div className="col-4">
+          <span className="badge badge-primary font-weight-normal mr-1">{specialty.direction}
+          </span>
+          <span className="badge badge-success font-weight-normal mr-1">{specialty.human_level}
+          </span>
+          <span className="badge badge-default font-weight-normal">{specialty.human_study_form}
+          </span>
+        </div>
+      </div>
+    )
+  },
+
   render: function() {
     var specialty = this.props.specialty;
+
     return(
       <div className="mt-2">
         <a href={"/specialties/" + specialty.id} target="_blank">
-          <div className="row py-2 px-0 hover-highlight">
-              <div className="col-8">
-                {specialty.profile}
-              </div>
-              <div className="col">
-                {specialty.human_study_form}
-              </div>
-          </div>
+          { this.props.search ?
+              this.specialtyForSearch()
+            :
+              this.regularSpecialty()
+          }
         </a>
       </div>
     )

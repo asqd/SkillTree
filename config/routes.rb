@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :specialties do
       get 'disciplines', on: :member
       get 'group_list', on: :collection
+      get :search, on: :collection
     end
     get 'disciplines' => 'disciplines#index'
   end
