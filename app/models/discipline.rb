@@ -36,14 +36,57 @@ class Discipline < ApplicationRecord
   scope :variable_obligatory, -> { where("label ILIKE '%.В.ОД%'") }
   scope :variable_elective, -> { where("label ILIKE '%.В.ДВ%'") }
 
-  scope :with_links, -> { joins(:link_specialty_disciplines)
-                          .select("disciplines.*,string_agg(DISTINCT link_specialty_disciplines.human_htype::varchar,',') as htypes,
-                          string_agg(DISTINCT link_specialty_disciplines.human_short_htype::varchar,',') as short_htypes,
-                          string_agg(DISTINCT link_specialty_disciplines.term_number::varchar,',') as terms")
-                          .group(:id)
-                        }
+  scope :with_links, -> {
+    joins(:link_specialty_disciplines)
+    .select("
+      disciplines.*,string_agg(DISTINCT link_specialty_disciplines.human_htype::varchar,',') as htypes,
+      string_agg(DISTINCT link_specialty_disciplines.human_short_htype::varchar,',') as short_htypes,
+      string_agg(DISTINCT link_specialty_disciplines.term_number::varchar,',') as terms,
+      json_object(array_agg(link_specialty_disciplines.human_short_htype::text), array_agg(link_specialty_disciplines.hours::text)) as hours
+    ")
+    .group(:id)
+  }
+
+  scope :compare, -> (specialty_ids, term_number) {
+    joins(:link_specialty_disciplines)
+    .select("
+      DISTINCT ON (disciplines.id) disciplines.*,
+      string_agg(DISTINCT link_specialty_disciplines.human_htype::varchar,',') as htypes,
+      string_agg(DISTINCT link_specialty_disciplines.human_short_htype::varchar,',') as short_htypes,
+      (SELECT
+        json_object(array_agg(ls.human_short_htype::text), array_agg(ls.hours::text))
+        FROM link_specialty_disciplines as ls
+        WHERE ls.specialty_id = #{specialty_ids[0]}
+        AND ls.discipline_id=disciplines.id
+        AND ls.term_number=#{term_number})
+      as first,
+      (SELECT
+        json_object(array_agg(ls.human_short_htype::text), array_agg(ls.hours::text))
+        FROM link_specialty_disciplines as ls
+        WHERE ls.specialty_id= #{specialty_ids[1]}
+        AND ls.discipline_id = disciplines.id
+        AND ls.term_number=#{term_number})
+      as second
+    ")
+    .select("link_specialty_disciplines.specialty_id, link_specialty_disciplines.discipline_id")
+    .group(
+      "link_specialty_disciplines.specialty_id,
+      link_specialty_disciplines.discipline_id"
+    )
+    .where(link_specialty_disciplines: { specialty_id: specialty_ids, term_number: term_number })
+    .group(:id)
+  }
 
   scope :with_links_by_params, -> (params={}) { with_links.where_by_params(params) }
+
+  scope :with_links_id, -> {
+    with_links
+    .select("link_specialty_disciplines.specialty_id, link_specialty_disciplines.discipline_id")
+    .group("
+    link_specialty_disciplines.specialty_id,
+    link_specialty_disciplines.discipline_id"
+    )
+  }
 
   def self.where_by_params(filters={})
     params = filters.symbolize_keys
@@ -71,7 +114,7 @@ class Discipline < ApplicationRecord
     when label.include?("-ИПМ")
       "Информационно-правовой"
     else
-      label
+      "Другое"
     end
   end
 

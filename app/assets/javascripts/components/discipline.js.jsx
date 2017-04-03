@@ -10,6 +10,7 @@ var Discipline = React.createClass({
     })
   },
 
+  /// render helpers
   formattedHtypes: function(){
     htypes_list = this.props.discipline.sorted_short_htype
     return htypes_list.map(function(htype, i){

@@ -43,6 +43,7 @@ var Specialty = React.createClass({
     }
   },
 
+  /// render helpers
   regularSpecialty: function() {
     var specialty = this.props.specialty;
     return (
@@ -80,17 +81,30 @@ var Specialty = React.createClass({
     )
   },
 
+  link: function() {
+    if (this.props.compare) {
+      return "/specialties/compare/" + location.pathname.replace(/\D/g, '') + "/" + this.props.specialty.id
+    }
+    else {
+      return "/specialties/" + this.props.specialty.id
+    }
+  },
+
+  renderContent: function() {
+    if (this.props.search) {
+      return this.specialtyForSearch()
+    } else {
+      return this.regularSpecialty()
+    }
+  },
+
   render: function() {
     var specialty = this.props.specialty;
 
     return(
       <div className="mt-2">
-        <a href={"/specialties/" + specialty.id} target="_blank">
-          { this.props.search ?
-              this.specialtyForSearch()
-            :
-              this.regularSpecialty()
-          }
+        <a href={this.link()} target="_blank">
+          {this.renderContent()}
         </a>
       </div>
     )

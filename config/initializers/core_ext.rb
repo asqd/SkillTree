@@ -1,0 +1,1 @@
+Dir[ Rails.root.join *%w(lib core_ext *) ].each{ |f| require f }
