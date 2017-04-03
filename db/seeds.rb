@@ -38,3 +38,8 @@ create_records(json)
 courses_spring = "/db/courses_spring.json"
 json = JSON.parse(open("#{Rails.root}#{courses_spring}").read)
 create_records(json)
+
+# csv_path = open("#{Rails.root}/db/departments.csv").read
+# CSV.parse(csv_path, col_sep: ";", headers: true).each do |row|
+#   Department.create(row)
+# end

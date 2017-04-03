@@ -4,6 +4,7 @@ var Direction = React.createClass({
       { specialties: [], isExpanded: false }
     );
   },
+
   componentWillReceiveProps: function(nextProps){
     $("#" + this.props.componentId).collapse('hide')
     this.setState({ isExpanded: false })
@@ -18,7 +19,7 @@ var Direction = React.createClass({
     $.ajax({
       url: '/api/specialties/?' + params,
       success: function(data) {
-        self.setState({ specialties: data });
+        self.setState({ specialties: data, isExpanded: !self.state.isExpanded });
       },
       error: function(xhr, status, error) {
         console.log('Cannot get data from API: ', error);
@@ -27,11 +28,11 @@ var Direction = React.createClass({
   },
 
   handleExpandDirection: function() {
-    this.setState({ isExpanded: !this.state.isExpanded })
     if (!this.state.isExpanded) {
       this.getSpecialtiesFromApi();
     } else {
-      this.setState({ specialties: [] })
+      this.setState({ isExpanded: !this.state.isExpanded })
+      // this.setState({ specialties: [] })
     }
   },
 
