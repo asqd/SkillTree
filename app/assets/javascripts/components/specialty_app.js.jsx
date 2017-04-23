@@ -2,6 +2,8 @@ var SpecialtyApp = React.createClass({
   getInitialState: function() {
     return {  specialties: [],
               disciplines: [],
+              searchResults: [],
+              query: "",
               currentTerm: "1й семестр"
     };
   },
@@ -27,6 +29,18 @@ var SpecialtyApp = React.createClass({
     });
   },
 
+  handleSearch: function (results, query) {
+    this.setState({ query: query });
+    this.setState({ searchResults: results });
+  },
+
+  changeGroup: function(name) {
+    this.setState({ currentTerm: name })
+    term_id = parseInt(name)
+    this.getDisciplinesFromApi(term_id)
+  },
+
+  /// render helpers
   termListComponents: function () {
     tabList = Array.apply(null, {length: this.props.specialty.terms_count}).map(function(_, i) {
         return (i+1) + "й семестр"
@@ -48,39 +62,74 @@ var SpecialtyApp = React.createClass({
 
   },
 
-  changeGroup: function(name) {
-    this.setState({ currentTerm: name })
-    term_id = parseInt(name)
-    this.getDisciplinesFromApi(term_id)
+  header: function() {
+    return (
+      <div className="container cursor-default">
+        <div className="card border-0">
+          <div className="card-text py-3">
+            <p className="card-text mb-2">
+              <span className="badge badge-default text-uppercase font-weight-normal mr-1">
+                {specialty.human_level}
+              </span>
+              <span className="badge badge-default text-uppercase font-weight-normal mr-1">
+                {specialty.human_study_form} форма обучения
+              </span>
+              <span className="badge badge-default text-uppercase font-weight-normal">
+                {specialty.code}
+              </span>
+            </p>
+            <h3 className="card-title">
+              {specialty.profile}
+            </h3>
+          </div>
+        </div>
+      </div>
+    )
+  },
+
+  searchResults: function () {
+    return (
+      <span>
+        <Specialties specialties={this.state.searchResults} search={true} compare={true} />
+      </span>
+    )
+  },
+
+  renderResults: function () {
+    if (this.state.searchResults.length == 0 && this.state.query.length == 0) {
+      return ""
+    } else {
+      return this.searchResults()
+    }
   },
 
   render: function() {
     specialty = this.props.specialty
     return(
       <div className="section">
-        <div className="container main">
-          <div className="container">
-            <div className="card border-0">
-              <div className="card-block py-3">
-                <p className="card-text mb-2">
-                  <span className="badge badge-default text-uppercase font-weight-normal mr-1">
-                    {specialty.human_level}
-                  </span>
-                  <span className="badge badge-default text-uppercase font-weight-normal">
-                    {specialty.human_study_form} форма обучения
-                  </span>
-                </p>
-                <h3 className="card-title">
-                  {specialty.profile}
-                </h3>
+        <div className="container main cursor-pointer">
+          <div className="container cursor-pointer mt-2">
+            <div className="d-flex justify-content-end">
+              <div className="mr-auto mt-1">
+                <a href="/">
+                  { "<- К списку специальностей" }
+                </a>
+              </div>
+              <div className="pt-1 cursor-default">
+                Сравнить с
+              </div>
+              <div className="col-6 pr-0">
+                <Typeahead handleSearch={this.handleSearch} />
               </div>
             </div>
+            {this.renderResults()}
           </div>
+          {this.header()}
           <div className="container">
             <ul className="nav nav-tabs">
               {this.termListComponents()}
             </ul>
-            <div className="row p-2">
+            <div className="row p-2 cursor-default">
               <div className="col-6">
                 Дисциплина
               </div>

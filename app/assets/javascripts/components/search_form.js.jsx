@@ -45,6 +45,7 @@ var SearchForm = React.createClass({
     this.handleSearch()
   },
 
+  /// render helpers
   checkboxList: function() {
     return this.state.humanLevels.map(function(label, i){
       return (
@@ -66,7 +67,7 @@ var SearchForm = React.createClass({
         <div>
           <input onChange={$.debounce(500, this.handleSearch)}
                  type="text"
-                 className="form-control"
+                 className="form-control search"
                  placeholder="Поиск по профилю или направлению"
                  ref="query" />
             {this.checkboxList()}

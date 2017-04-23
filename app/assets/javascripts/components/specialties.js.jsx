@@ -1,8 +1,11 @@
 var Specialties = React.createClass({
+
+  /// render helpers
   specialtyList: function() {
     return this.props.specialties.map(function(specialty){
       return (<Specialty specialty={specialty}
                       search={this.props.search}
+                      compare={this.props.compare}
                       key={'specialty' + specialty.id}
                       componentId={'specialty' + specialty.id} />)
     }.bind(this));
@@ -49,13 +52,13 @@ var Specialties = React.createClass({
 
   render: function() {
     return(
-      <div className="container main">
+      <div className="container main cursor-default">
         { this.props.search ?
             this.searchHeaderCols()
           :
             this.regularHeaderCols()
         }
-        { this.specialtyList().length > 0  ?
+        { this.specialtyList().length > 0 ?
             this.specialtyList()
           :
             this.nothingFound()

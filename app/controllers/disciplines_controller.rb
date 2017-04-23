@@ -2,6 +2,7 @@ class DisciplinesController < ApplicationController
   before_action :set_discipline, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :set_specialties, only: [:by_specialty]
+
   # GET /disciplines
   # GET /disciplines.json
   def index

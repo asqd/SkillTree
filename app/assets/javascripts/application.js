@@ -42,8 +42,20 @@ window.htype_bages = {
   "Лек": "success",
   "Пр": "info",
   "СРС": "default",
-  "Экз": "warning"
+  "Экз": "danger"
 }
+
+window.human_label_bages = {
+  "Гуманитарный": "warning",
+  "Общенаучный": "info",
+  "Общепрофессиональный": "success",
+  "Профессиональный": "primary",
+  "Естественнонаучный": "info",
+  "Информационно-правовой": "secondary",
+  "Другое": "secondary"
+}
+
+window.htypes_order = ['Лек', 'Лаб', 'Пр', 'СРС', 'КСР', 'К/п', 'К/р', 'Зач', 'Экз']
 
 $(window).load(function(){
 	// accordion settings
