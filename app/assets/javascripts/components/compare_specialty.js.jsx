@@ -182,9 +182,7 @@ var CompareSpecialtyApp = React.createClass({
           {this.header()}
 
           <div className="container cursor-default">
-            <ul className="nav nav-tabs">
-              {this.termListComponents()}
-            </ul>
+            {this.termListComponents()}
             <div className="row mt-3 mb-2">
               <div className="col">
                 <h4>Общие дисциплины</h4>

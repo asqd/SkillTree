@@ -2,18 +2,21 @@
 #
 # Table name: disciplines
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  label      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  zet        :float
-#  practice   :boolean
+#  id            :integer          not null, primary key
+#  name          :string
+#  label         :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  zet           :float
+#  practice?     :boolean
+#  department_id :integer
+#  human_level   :string
 #
 
 class Discipline < ApplicationRecord
   has_many :link_specialty_disciplines
   has_many :specialties, -> { distinct }, through: :link_specialty_disciplines
+  belongs_to :department
 
   ### Scopes
   # module scopes
@@ -99,24 +102,24 @@ class Discipline < ApplicationRecord
   end
 
   ### methods and helpers
-  def human_label
-    case
-    when label.include?("-ГМ")
-      "Гуманитарный"
-    when label.include?("-ОНМ")
-      "Общенаучный"
-    when label.include?("-ОПМ")
-      "Общепрофессиональный"
-    when label.include?("-ПМ")
-      "Профессиональный"
-    when label.include?("-ЕНМ")
-      "Естественнонаучный"
-    when label.include?("-ИПМ")
-      "Информационно-правовой"
-    else
-      "Другое"
-    end
-  end
+  # def human_label
+  #   case
+  #   when label.include?("-ГМ")
+  #     "Гуманитарный"
+  #   when label.include?("-ОНМ")
+  #     "Общенаучный"
+  #   when label.include?("-ОПМ")
+  #     "Общепрофессиональный"
+  #   when label.include?("-ПМ")
+  #     "Профессиональный"
+  #   when label.include?("-ЕНМ")
+  #     "Естественнонаучный"
+  #   when label.include?("-ИПМ")
+  #     "Информационно-правовой"
+  #   else
+  #     "Другое"
+  #   end
+  # end
 
   def sorted_short_htype
     order = ['Лек', 'Лаб', 'Пр', 'СРС', 'КСР', 'К/п', 'К/р', 'Зач', 'Экз']

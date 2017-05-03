@@ -18,7 +18,7 @@ var Specialties = React.createClass({
           Код
         </div>
         <div className="col-7">
-          Профиль
+          Программа
         </div>
         <div className="col">
         </div>
@@ -30,10 +30,13 @@ var Specialties = React.createClass({
     return (
       <div className="row">
         <div className="col-7">
-          Профиль
+          Программа
         </div>
-        <div className="col">
-          Форма обучения
+        <div className="col-2">
+          Форма
+        </div>
+        <div className="col-3">
+          Институт
         </div>
       </div>
     )

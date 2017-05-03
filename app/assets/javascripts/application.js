@@ -45,6 +45,18 @@ window.htype_bages = {
   "Экз": "danger"
 }
 
+window.htype_bgs = {
+  "Зач": "warning",
+  "К/п": "inverse",
+  "К/р": "inverse",
+  "КСР": "info",
+  "Лаб": "info",
+  "Лек": "success",
+  "Пр": "info",
+  "СРС": "inverse",
+  "Экз": "danger"
+}
+
 window.human_label_bages = {
   "Гуманитарный": "warning",
   "Общенаучный": "info",

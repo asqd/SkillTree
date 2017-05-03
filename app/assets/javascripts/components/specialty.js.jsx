@@ -51,8 +51,11 @@ var Specialty = React.createClass({
         <div className="col-7">
           {specialty.profile}
         </div>
-        <div className="col">
+        <div className="col-2">
           {specialty.human_study_form}
+        </div>
+        <div className="col-3">
+          {specialty.sae_string}
         </div>
       </div>
     )

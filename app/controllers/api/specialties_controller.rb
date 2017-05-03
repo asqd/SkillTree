@@ -5,7 +5,7 @@ module Api
 
     def index
       filter = filter_params
-      render json: Specialty.where(filter)
+      render json: Specialty.where(filter).to_json(methods: [:sae_string])
     end
 
     def group_list
@@ -38,6 +38,8 @@ module Api
     private
     def get_group_list
       grouped_directions = Specialty.directions.count(:direction).map(&:flatten).sort.group_by {|s| s[1]}
+      sort_order = ["Бакалавриат", "Магистратура", "Специалитет", "Аспирантура"]
+      grouped_directions = ApplicationController.helpers.custom_sort_by(grouped_directions, 0, sort_order)
       @group_list = grouped_directions.reduce({}) {|hash, (k, v)| hash.merge({k => v.map{ |f| { direction: f[0], code: f[2], specialty_count: f[3]}}})}
     end
 
