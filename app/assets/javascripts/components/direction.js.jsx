@@ -1,7 +1,7 @@
 var Direction = React.createClass({
   getInitialState: function() {
     return (
-      { specialties: [], isExpanded: false }
+      { specialties: [], isExpanded: false, loading: true }
     );
   },
 
@@ -12,6 +12,9 @@ var Direction = React.createClass({
 
   getSpecialtiesFromApi: function () {
     var self = this
+    if (!this.state.loading) {
+      this.setState({ loading: true })
+    }
     params =  $.param({
                 direction: this.props.direction.direction,
                 human_level: this.props.humanLevel
@@ -20,6 +23,7 @@ var Direction = React.createClass({
       url: '/api/specialties/?' + params,
       success: function(data) {
         self.setState({ specialties: data, isExpanded: !self.state.isExpanded });
+        setTimeout(function () { self.setState({ loading: false }) }, 100)
       },
       error: function(xhr, status, error) {
         console.log('Cannot get data from API: ', error);
@@ -43,14 +47,17 @@ var Direction = React.createClass({
           <div className="col-2">
             {this.props.direction.code}
           </div>
-          <div className="col">
+          <div className="col-7">
             {this.props.direction.direction}
             <span className="mx-2 badge badge-default">{this.props.direction.specialty_count}</span>
+          </div>
+          <div className="col-3">
+            {stringUtils.smartString(this.props.direction.saes)}
           </div>
         </div>
         <div className="collapse mt-2" id={this.props.componentId}>
           <div className="card card-block">
-            <Specialties specialties={this.state.specialties} />
+            <Specialties specialties={this.state.specialties} loading={this.state.loading} />
           </div>
         </div>
       </div>)

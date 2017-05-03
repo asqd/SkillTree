@@ -18,9 +18,9 @@ var Specialties = React.createClass({
           Код
         </div>
         <div className="col-7">
-          Профиль
+          Программа
         </div>
-        <div className="col">
+        <div className="col-3">
         </div>
       </div>
     )
@@ -30,21 +30,24 @@ var Specialties = React.createClass({
     return (
       <div className="row">
         <div className="col-7">
-          Профиль
+          Программа
         </div>
-        <div className="col">
-          Форма обучения
+        <div className="col-2">
+          Форма
+        </div>
+        <div className="col-3">
+          Институт
         </div>
       </div>
     )
   },
 
   nothingFound: function() {
+    tag = this.props.loading ? <h3>Загрузка...</h3> : <h3>Мы ничего не нашли :( <br /> Попробуйте изменить запрос</h3>
     return (
       <div className="row py-2 px-0">
         <div className="col text-muted">
-          <h3>Мы ничего не нашли :(</h3>
-          <h3>Попробуйте изменить запрос</h3>
+          { tag }
         </div>
       </div>
     )

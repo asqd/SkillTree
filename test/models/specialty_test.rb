@@ -16,6 +16,8 @@
 #  code             :string
 #  profile          :string
 #  qualification    :string
+#  department_id    :integer
+#  sae_id           :integer
 #
 
 require 'test_helper'

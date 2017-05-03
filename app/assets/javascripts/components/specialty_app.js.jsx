@@ -69,6 +69,9 @@ var SpecialtyApp = React.createClass({
           <div className="card-text py-3">
             <p className="card-text mb-2">
               <span className="badge badge-default text-uppercase font-weight-normal mr-1">
+                {stringUtils.smartString(specialty.sae_short_name, "")}
+              </span>
+              <span className="badge badge-default text-uppercase font-weight-normal mr-1">
                 {specialty.human_level}
               </span>
               <span className="badge badge-default text-uppercase font-weight-normal mr-1">
@@ -126,18 +129,16 @@ var SpecialtyApp = React.createClass({
           </div>
           {this.header()}
           <div className="container">
-            <ul className="nav nav-tabs">
-              {this.termListComponents()}
-            </ul>
-            <div className="row p-2 cursor-default">
-              <div className="col-6">
+            {this.termListComponents()}
+            <div className="row p-2 mt-3 mb-0 font-weight-bold cursor-default">
+              <div className="col-5">
                 Дисциплина
               </div>
-              <div className="col">
+              <div className="col-3">
                 Модуль
               </div>
-              <div className="col">
-
+              <div className="col-4">
+                Тип занятий
               </div>
             </div>
             {this.disciplineList()}

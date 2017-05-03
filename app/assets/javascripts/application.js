@@ -45,6 +45,18 @@ window.htype_bages = {
   "Экз": "danger"
 }
 
+window.htype_bgs = {
+  "Зач": "warning",
+  "К/п": "inverse",
+  "К/р": "inverse",
+  "КСР": "info",
+  "Лаб": "info",
+  "Лек": "success",
+  "Пр": "info",
+  "СРС": "inverse",
+  "Экз": "danger"
+}
+
 window.human_label_bages = {
   "Гуманитарный": "warning",
   "Общенаучный": "info",
@@ -56,6 +68,17 @@ window.human_label_bages = {
 }
 
 window.htypes_order = ['Лек', 'Лаб', 'Пр', 'СРС', 'КСР', 'К/п', 'К/р', 'Зач', 'Экз']
+
+stringUtils = {
+  smartString: function (str, sep) {
+    sep = sep == "" ?  "" : sep || "-"
+    if (str != "" && str != undefined && str != null) {
+      return str
+    } else {
+      return sep
+    }
+  }
+}
 
 $(window).load(function(){
 	// accordion settings

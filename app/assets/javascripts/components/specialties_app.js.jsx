@@ -62,10 +62,8 @@ var SpecialtiesApp = React.createClass({
   directions: function() {
     return (
       <span>
-        <ul className="nav nav-tabs">
-          {this.groupListComponents()}
-        </ul>
-          <Directions directions={this.state.directions} humanLevel={this.state.currentGroup} />
+        {this.groupListComponents()}
+        <Directions directions={this.state.directions} humanLevel={this.state.currentGroup} />
       </span>
     )
   },

@@ -14,15 +14,17 @@ var Discipline = React.createClass({
   formattedHtypes: function(){
     htypes_list = this.props.discipline.sorted_short_htype
     return htypes_list.map(function(htype, i){
-      return (<span className={"mx-1 badge " + "badge-" +
-                      window.htype_bages[htype]}
+      badgeColor = (htypes_list.indexOf(htype) != -1) ? "badge-" + window.htype_bages[htype] : "invisible"
+      return (
+        <span className={"mr-1 badge " + badgeColor}
                       data-toggle="tooltip"
                       data-placement="bottom"
+                      data-original-title={window.htypes[htype]}
                       title={window.htypes[htype]}
                       key={"htype" + i}>
-                {htype}
-              </span>
-              )
+          {htype}
+        </span>
+      )
     })
   },
 
@@ -30,13 +32,13 @@ var Discipline = React.createClass({
     var discipline = this.props.discipline;
     return(
       <div className="row p-2 hover-highlight" data-toggle="collapse" href={'#' + this.props.componentId}>
-        <div className="col-6">
+        <div className="col-5">
           {discipline.name}
         </div>
-        <div className="col">
+        <div className="col-3">
           {discipline.human_label}
         </div>
-        <div className="col">
+        <div className="col-4">
           {this.formattedHtypes()}
         </div>
       </div>

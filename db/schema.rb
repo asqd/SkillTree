@@ -10,18 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170305104428) do
+ActiveRecord::Schema.define(version: 20170504205255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "departments_saes", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "sae_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["department_id"], name: "index_departments_saes_on_department_id", using: :btree
+    t.index ["sae_id"], name: "index_departments_saes_on_sae_id", using: :btree
+  end
+
   create_table "disciplines", force: :cascade do |t|
     t.string   "name"
     t.string   "label"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.float    "zet"
     t.boolean  "practice?"
+    t.integer  "department_id"
+    t.string   "human_label"
   end
 
   create_table "link_specialty_disciplines", force: :cascade do |t|
@@ -39,6 +56,13 @@ ActiveRecord::Schema.define(version: 20170305104428) do
     t.index ["specialty_id"], name: "index_link_specialty_disciplines_on_specialty_id", using: :btree
   end
 
+  create_table "saes", force: :cascade do |t|
+    t.string   "short_name"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "specialties", force: :cascade do |t|
     t.integer  "dtype"
     t.string   "human_dtype"
@@ -53,6 +77,8 @@ ActiveRecord::Schema.define(version: 20170305104428) do
     t.string   "code"
     t.string   "profile"
     t.string   "qualification"
+    t.integer  "department_id"
+    t.integer  "sae_id"
   end
 
   create_table "users", force: :cascade do |t|

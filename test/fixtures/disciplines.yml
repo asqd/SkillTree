@@ -2,13 +2,15 @@
 #
 # Table name: disciplines
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  label      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  zet        :float
-#  practice   :boolean
+#  id            :integer          not null, primary key
+#  name          :string
+#  label         :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  zet           :float
+#  practice?     :boolean
+#  department_id :integer
+#  human_label   :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

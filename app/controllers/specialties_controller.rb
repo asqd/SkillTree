@@ -4,7 +4,7 @@ class SpecialtiesController < ApplicationController
 
   def compare
     @ids = [params[:id], params[:comparison_id]]
-    @specialties = Specialty.with_term_number.where(id: @ids)
+    @specialties = Specialty.with_term_number.with_sae.where(id: @ids)
     @specialties = ApplicationController.helpers.custom_sort_by(@specialties, 'id', @ids.map(&:to_i))
     @terms_count = @specialties.map(&:terms_count).max
   end
@@ -78,7 +78,7 @@ class SpecialtiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_specialty
-      @specialty = Specialty.with_term_number.find(params[:id])
+      @specialty = Specialty.with_term_number.with_sae.find(params[:id])
       # @specialty = Specialty.find(params[:id])
     end
 

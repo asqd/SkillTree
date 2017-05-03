@@ -5,7 +5,7 @@ module Api
 
     def index
       filter = filter_params
-      render json: Specialty.where(filter)
+      render json: Specialty.where(filter).to_json(methods: [:sae_name, :sae_short_name])
     end
 
     def group_list
@@ -27,7 +27,7 @@ module Api
         @specialties = @specialties.where("human_level ILIKE ANY(array[?])", human_levels)
       end
 
-      render json: @specialties
+      render json: @specialties.to_json(methods: [:sae_short_name])
     end
 
     def disciplines
@@ -37,8 +37,11 @@ module Api
 
     private
     def get_group_list
-      grouped_directions = Specialty.directions.count(:direction).map(&:flatten).sort.group_by {|s| s[1]}
-      @group_list = grouped_directions.reduce({}) {|hash, (k, v)| hash.merge({k => v.map{ |f| { direction: f[0], code: f[2], specialty_count: f[3]}}})}
+      # grouped_directions = Specialty.directions.count(:direction).map(&:flatten).sort.group_by {|s| s[1]}
+      grouped_directions = Specialty.directions.map(&:attributes).group_by {|s| s["human_level"]}
+      sort_order = ["Бакалавриат", "Магистратура", "Специалитет", "Аспирантура"]
+      @group_list = ApplicationController.helpers.custom_sort_by(grouped_directions, 0, sort_order).to_h
+      # @group_list = grouped_directions.reduce({}) {|hash, (k, v)| hash.merge({k => v.map{ |f| { direction: f[0], code: f[2], specialty_count: f[3]}}})}
     end
 
     def filter_params

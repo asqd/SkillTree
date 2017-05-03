@@ -134,6 +134,9 @@ var CompareSpecialtyApp = React.createClass({
             <div className="card-block p-2">
               <small className="card-text">
                 <span className="badge badge-default text-uppercase font-weight-normal mr-1">
+                  {stringUtils.smartString(specialty.sae_short_name, "")}
+                </span>
+                <span className="badge badge-default text-uppercase font-weight-normal mr-1">
                   {specialty.human_level}
                 </span>
                 <span className="badge badge-default text-uppercase font-weight-normal mr-1">
@@ -182,9 +185,7 @@ var CompareSpecialtyApp = React.createClass({
           {this.header()}
 
           <div className="container cursor-default">
-            <ul className="nav nav-tabs">
-              {this.termListComponents()}
-            </ul>
+            {this.termListComponents()}
             <div className="row mt-3 mb-2">
               <div className="col">
                 <h4>Общие дисциплины</h4>
